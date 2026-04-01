@@ -1,5 +1,8 @@
 ---
+const url = "https://jsonplaceholder.typicode.com/todos"
+const response = await fetch(url);
 
+const todos = await response.json();
 ---
 
 <html lang="en">
@@ -12,6 +15,12 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		
+		<p>Wij hebben {todos.length} taken voor jou</p>
+
+		<ul>
+			{todos.map(todo => <li>{todo.title}</li>)}
+		</ul>
+	<input type="text" />
 	</body>
 </html>
