@@ -1,0 +1,8 @@
+.song-container {
+    background: pink;
+}
+
+.album-cover {
+    width: 4rem;
+    aspect-ratio: 1;
+}

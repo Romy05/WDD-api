@@ -33,9 +33,10 @@ async function fetchSpotifyAuthToken() {
 
 export async function fetchSpotifySongsByGenre(genre) {
     const authToken = await fetchSpotifyAuthToken();
-    const url = 'https://api.spotify.com/v1/tracks/'
+    const url = 'https://api.spotify.com/v1/search?type=track';
+    const query = `&q=tag%3A${genre}`;
     try {
-        const response = await fetch(url, {
+        const response = await fetch(url + query, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${authToken}`,

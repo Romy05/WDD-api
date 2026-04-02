@@ -1,13 +1,9 @@
 ---
 import { fetchSpotifySongsByGenre, fetchSuggestedGamesBySearch } from '../api/index.js';
+import Song from '../components/Song/Song.astro';
 
-const songs = await fetchSpotifySongsByGenre('hiphop');
-
-// const url = "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy"
-// const response = await fetch(url)
-//
-// const todos = await response.json()
-// console.log(todos)
+const search = await fetchSpotifySongsByGenre('hiphop');
+const songs = search.tracks.items;
 ---
 
 <html lang="en">
@@ -20,7 +16,11 @@ const songs = await fetchSpotifySongsByGenre('hiphop');
 		<title>Astro</title>
 	</head>
 	<body>
-
+	{
+		songs.map(song => {
+			return <Song song={song} key={song.id}/>
+		})
+	}
 
 	<input type="text" />
 	</body>
