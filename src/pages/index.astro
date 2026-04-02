@@ -1,8 +1,13 @@
 ---
-const url = "https://jsonplaceholder.typicode.com/todos"
-const response = await fetch(url);
+import { fetchSpotifySongsByGenre, fetchSuggestedGamesBySearch } from '../api/index.js';
 
-const todos = await response.json();
+const songs = await fetchSpotifySongsByGenre('hiphop');
+
+// const url = "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy"
+// const response = await fetch(url)
+//
+// const todos = await response.json()
+// console.log(todos)
 ---
 
 <html lang="en">
@@ -15,12 +20,8 @@ const todos = await response.json();
 		<title>Astro</title>
 	</head>
 	<body>
-		
-		<p>Wij hebben {todos.length} taken voor jou</p>
 
-		<ul>
-			{todos.map(todo => <li>{todo.title}</li>)}
-		</ul>
+
 	<input type="text" />
 	</body>
 </html>

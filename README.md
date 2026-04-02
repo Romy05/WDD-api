@@ -1,43 +1,18 @@
-# Astro Starter Kit: Minimal
+# API Project WDD
 
-```sh
-npm create astro@latest -- --template minimal
-```
+## Checkout 1-4-2026
+Vandaag ben ik begonnen met het maken van een idee voor het project. 
+Ik wil graag de spotify API combineren met een videogame API waarbij ik op basis van een game genre aan de hand van web AI
+een aantal nummer suggesteer, waarmee de gebruiker kan zeggen of hij/zij deze in de playlist wil.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Weekly Checkout 2-4-2026
+Na het gesprek met mijn clubje en Cyd ben ik tot de conclusie gekomen dat de beste eerstvolgende stap is:
+Het toevoegen van de Spotify/playlist functionaliteit zonder dat dit gekoppeld is aan de web AI of videogame API
 
-## 🚀 Project Structure
+# Commands
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+* `npm install` → installs dependencies
+* `npm run dev` → starts development server
+* `npm run build` → builds the app for production
+* `npm run preview` → previews the production build locally
+* `npm run start` → starts the app on the correct port (for deployment)
