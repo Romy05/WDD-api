@@ -16,9 +16,7 @@ export async function fetchSuggestedGamesBySearch(search) {
             return;
         }
 
-        const data = await response.json();
-        console.log(data);
-        return data;
+        return await response.json();
     } catch (error) {
         console.log('Something went wrong while trying to fetch data', error);
     }

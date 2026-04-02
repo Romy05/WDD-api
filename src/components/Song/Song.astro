@@ -1,10 +1,13 @@
 ---
 const { song } = Astro.props;
-console.log(song.album.images[0])
+
 import './song.css';
 ---
 
 <div class="song-container">
     <img class="album-cover" src={song.album.images[0].url} alt="album cover">
     <span>{song.name}</span>
+    <button>Play/Pause</button>
+    <button>Add</button>
+    <button>Remove</button>
 </div>

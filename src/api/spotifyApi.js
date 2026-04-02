@@ -31,10 +31,13 @@ async function fetchSpotifyAuthToken() {
     }
 }
 
-export async function fetchSpotifySongsByGenre(genre) {
+export async function fetchSpotifyArtistsByGenre(genre, offset = 0, limit = 5) {
     const authToken = await fetchSpotifyAuthToken();
-    const url = 'https://api.spotify.com/v1/search?type=track';
-    const query = `&q=tag%3A${genre}`;
+
+    const market = navigator.language.split('-')[1] || 'US';
+
+    const url = 'https://api.spotify.com/v1/search?type=artist';
+    const query = `&q=genre%3A${genre}&market=${market}&limit=${limit}&offset=${offset}`;
     try {
         const response = await fetch(url + query, {
             method: "GET",
@@ -48,9 +51,34 @@ export async function fetchSpotifySongsByGenre(genre) {
             return;
         }
 
+        return await response.json();
+    } catch (error) {
+        console.log('Something went wrong while trying to fetch data', error);
+    }
+}
+
+export async function fetchSpotifyTrackByArtist(artistName, limit = 10) {
+    const authToken = await fetchSpotifyAuthToken();
+
+    const market = navigator.language.split('-')[1] || 'US';
+    const url = `https://api.spotify.com/v1/search`;
+    const query = `?q=artist%3A${encodeURIComponent(artistName)}&type=track&market=${market}&limit=${limit}`;
+
+    try {
+        const response = await fetch(url + query, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+            },
+        });
+
+        if (!response.ok) {
+            console.log('Something went wrong while trying to fetch data', response);
+            return;
+        }
         const data = await response.json();
-        console.log(data);
-        return data;
+        const songs = data.tracks.items;
+        return songs[Math.floor(Math.random() * songs.length)];
     } catch (error) {
         console.log('Something went wrong while trying to fetch data', error);
     }

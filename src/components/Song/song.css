@@ -1,5 +1,10 @@
 .song-container {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
     background: pink;
+
 }
 
 .album-cover {

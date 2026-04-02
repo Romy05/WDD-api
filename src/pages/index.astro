@@ -1,9 +1,17 @@
 ---
-import { fetchSpotifySongsByGenre, fetchSuggestedGamesBySearch } from '../api/index.js';
+import {
+	fetchSpotifyArtistsByGenre,
+	fetchSpotifyTrackByArtist,
+	fetchSuggestedGamesBySearch
+} from '../api/index.js';
 import Song from '../components/Song/Song.astro';
 
-const search = await fetchSpotifySongsByGenre('hiphop');
-const songs = search.tracks.items;
+const artistSearch = await fetchSpotifyArtistsByGenre('pop', 20, 10);
+const artists = artistSearch.artists.items;
+
+const songs = await Promise.all(artists.map(async (artist) => {
+	return await fetchSpotifyTrackByArtist(artist.name);
+}));
 ---
 
 <html lang="en">

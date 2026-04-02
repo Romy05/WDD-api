@@ -9,6 +9,23 @@ een aantal nummer suggesteer, waarmee de gebruiker kan zeggen of hij/zij deze in
 Na het gesprek met mijn clubje en Cyd ben ik tot de conclusie gekomen dat de beste eerstvolgende stap is:
 Het toevoegen van de Spotify/playlist functionaliteit zonder dat dit gekoppeld is aan de web AI of videogame API
 
+
+# Stijl inspiratie
+
+Na het maken van de projecten voor CSS en BT, ben ik er achter gekomen dat het handig is om eerst een moodboard te maken.
+Hierdoor denk ik bewuster na over wat ik ga maken en of het bij de stijl past. Hier vind je mijn inspiratiebronnen voor dit project.
+
+https://www.sensorvariablefont.com/variable-font-reacts-to-music/
+https://vimeo.com/809461900?fl=pl&fe=sh
+
+## fun fonts: 
+https://fontesk.com/furnitur-font/  
+https://fontesk.com/kikuta-font/  
+https://fontesk.com/bitcount-typeface/  
+https://fontesk.com/that-then-this-font/
+https://fontesk.com/mini-mochi-font/   
+https://fontesk.com/ojuju-font/
+
 # Commands
 
 * `npm install` → installs dependencies
