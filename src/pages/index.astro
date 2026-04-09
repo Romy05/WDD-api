@@ -4,7 +4,8 @@ import {
 	fetchSpotifyTrackByArtist,
 	fetchSuggestedGamesBySearch
 } from '../api/index.js';
-import Song from '../components/Song/Song.astro';
+import SongList from '../components/SongList/SongList.astro';
+import SongPreview from '../components/SongPreview/SongPreview.astro';
 import PlayList from '../components/Playlist/Playlist.astro';
 
 import '../style/index.css';
@@ -22,6 +23,7 @@ import songs from '../data/dummySongs.json';
 ---
 
 <html lang="en">
+
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -30,15 +32,13 @@ import songs from '../data/dummySongs.json';
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
+
 	<body>
 
-	{
-		songs.map(song => {
-			return <Song song={song} key={song.id}/>
-		})
-	}
+		<SongList songs={songs} />
 
-	<PlayList songs={songs} />
+		<PlayList songs={songs} />
 
+		<SongPreview />
 	</body>
 </html>

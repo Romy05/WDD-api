@@ -1,46 +1,191 @@
 [
   {
-    "id": 1,
-    "name": "Blinding Lights",
+    "id": "2HRqTpkrJO5ggZyyK6NPWz",
+    "name": "Espresso",
+    "uri": "spotify:track:2HRqTpkrJO5ggZyyK6NPWz",
+    "explicit": true,
+    "duration_ms": 175459,
+    "track_number": 7,
+    "external_url": "https://open.spotify.com/track/2HRqTpkrJO5ggZyyK6NPWz",
     "album": {
-      "images": [
-        { "url": "https://picsum.photos/seed/1/300/300" }
-      ]
-    }
-  },
-  {
-    "id": 2,
-    "name": "Stay",
-    "album": {
+      "id": "3iPSVi54hsacKKl1xIR2eH",
+      "name": "Short n' Sweet",
+      "release_date": "2024-08-23",
+      "total_tracks": 12,
+      "uri": "spotify:album:3iPSVi54hsacKKl1xIR2eH",
       "images": [
         { "url": "https://picsum.photos/seed/2/300/300" }
       ]
     }
   },
   {
-    "id": 3,
-    "name": "Levitating",
+    "id": "6O5TrlFWTYvznd9fMC0VvU",
+    "name": "When We Were Young",
+    "uri": "spotify:track:6O5TrlFWTYvznd9fMC0VvU",
+    "explicit": false,
+    "duration_ms": 290900,
+    "track_number": 4,
+    "external_url": "https://open.spotify.com/track/6O5TrlFWTYvznd9fMC0VvU",
     "album": {
+      "id": "6TVfiWmo8KtflUAmkK9gGF",
+      "name": "25",
+      "release_date": "2015-11-20",
+      "total_tracks": 11,
+      "uri": "spotify:album:6TVfiWmo8KtflUAmkK9gGF",
       "images": [
-        { "url": "https://picsum.photos/seed/3/300/300" }
+        { "url": "https://picsum.photos/seed/2/300/300" }
       ]
     }
   },
   {
-    "id": 4,
-    "name": "Peaches",
+    "id": "6aoJh8zwnee5dwdAo9L85D",
+    "name": "Zoo - From \"Zootropolis 2\"",
+    "uri": "spotify:track:6aoJh8zwnee5dwdAo9L85D",
+    "explicit": false,
+    "duration_ms": 190822,
+    "track_number": 1,
+    "external_url": "https://open.spotify.com/track/6aoJh8zwnee5dwdAo9L85D",
     "album": {
+      "id": "34EJWqwMzUmse8388uSpgr",
+      "name": "Zoo (From \"Zootropolis 2\")",
+      "release_date": "2025-10-10",
+      "total_tracks": 1,
+      "uri": "spotify:album:34EJWqwMzUmse8388uSpgr",
       "images": [
-        { "url": "https://picsum.photos/seed/4/300/300" }
+        { "url": "https://picsum.photos/seed/2/300/300" }
       ]
     }
   },
   {
-    "id": 5,
-    "name": "Good 4 U",
+    "id": "6SxPeeIm0exX9vXLZMZn2J",
+    "name": "Loser",
+    "uri": "spotify:track:6SxPeeIm0exX9vXLZMZn2J",
+    "explicit": false,
+    "duration_ms": 163520,
+    "track_number": 1,
+    "external_url": "https://open.spotify.com/track/6SxPeeIm0exX9vXLZMZn2J",
     "album": {
+      "id": "2cCRxb2mWYNWAL7KNMoL95",
+      "name": "GO BESTFRIEND",
+      "release_date": "2025-11-14",
+      "total_tracks": 4,
+      "uri": "spotify:album:2cCRxb2mWYNWAL7KNMoL95",
       "images": [
-        { "url": "https://picsum.photos/seed/5/300/300" }
+        { "url": "https://picsum.photos/seed/2/300/300" }
+      ]
+    }
+  },
+  {
+    "id": "2bJvI42r8EF3wxjOuDav4r",
+    "name": "Time of Our Lives",
+    "uri": "spotify:track:2bJvI42r8EF3wxjOuDav4r",
+    "explicit": true,
+    "duration_ms": 229358,
+    "track_number": 4,
+    "external_url": "https://open.spotify.com/track/2bJvI42r8EF3wxjOuDav4r",
+    "album": {
+      "id": "4EUf4YyNjuXypWY6W5wEDm",
+      "name": "Globalization",
+      "release_date": "2014-11-24",
+      "total_tracks": 11,
+      "uri": "spotify:album:4EUf4YyNjuXypWY6W5wEDm",
+      "images": [
+        { "url": "https://picsum.photos/seed/2/300/300" }
+      ]
+    }
+  },
+  {
+    "id": "2mdEsXPu8ZmkHRRtAdC09e",
+    "name": "Cinnamon Girl",
+    "uri": "spotify:track:2mdEsXPu8ZmkHRRtAdC09e",
+    "explicit": false,
+    "duration_ms": 300683,
+    "track_number": 7,
+    "external_url": "https://open.spotify.com/track/2mdEsXPu8ZmkHRRtAdC09e",
+    "album": {
+      "id": "5XpEKORZ4y6OrCZSKsi46A",
+      "name": "Norman Fucking Rockwell!",
+      "release_date": "2019-08-30",
+      "total_tracks": 14,
+      "uri": "spotify:album:5XpEKORZ4y6OrCZSKsi46A",
+      "images": [
+        { "url": "https://picsum.photos/seed/2/300/300" }
+      ]
+    }
+  },
+  {
+    "id": "0HWjXL4layDbYbCj21uzd8",
+    "name": "Moët Dat Nou",
+    "uri": "spotify:track:0HWjXL4layDbYbCj21uzd8",
+    "explicit": false,
+    "duration_ms": 154691,
+    "track_number": 1,
+    "external_url": "https://open.spotify.com/track/0HWjXL4layDbYbCj21uzd8",
+    "album": {
+      "id": "7F5D4dM8ANyl1zY5V7knze",
+      "name": "Moët Dat Nou",
+      "release_date": "2026-01-08",
+      "total_tracks": 1,
+      "uri": "spotify:album:7F5D4dM8ANyl1zY5V7knze",
+      "images": [
+        { "url": "https://picsum.photos/seed/2/300/300" }
+      ]
+    }
+  },
+  {
+    "id": "3ebXMykcMXOcLeJ9xZ17XH",
+    "name": "Scared to Be Lonely",
+    "uri": "spotify:track:3ebXMykcMXOcLeJ9xZ17XH",
+    "explicit": false,
+    "duration_ms": 220883,
+    "track_number": 1,
+    "external_url": "https://open.spotify.com/track/3ebXMykcMXOcLeJ9xZ17XH",
+    "album": {
+      "id": "2v9rQe4F8fVSh5v8bAq0jF",
+      "name": "Scared to Be Lonely",
+      "release_date": "2017-01-27",
+      "total_tracks": 1,
+      "uri": "spotify:album:2v9rQe4F8fVSh5v8bAq0jF",
+      "images": [
+        { "url": "https://picsum.photos/seed/2/300/300" }
+      ]
+    }
+  },
+  {
+    "id": "0TwBtDAWpkpM3srywFVOV5",
+    "name": "Crazy In Love (feat. JAY-Z)",
+    "uri": "spotify:track:0TwBtDAWpkpM3srywFVOV5",
+    "explicit": false,
+    "duration_ms": 235933,
+    "track_number": 1,
+    "external_url": "https://open.spotify.com/track/0TwBtDAWpkpM3srywFVOV5",
+    "album": {
+      "id": "06v9eHnqhMK2tbM2Iz3p0Y",
+      "name": "Dangerously In Love",
+      "release_date": "2003-03-10",
+      "total_tracks": 16,
+      "uri": "spotify:album:06v9eHnqhMK2tbM2Iz3p0Y",
+      "images": [
+        { "url": "https://picsum.photos/seed/2/300/300" }
+      ]
+    }
+  },
+  {
+    "id": "1buASziRLNHXcTVYFWZ8EK",
+    "name": "Harder Dan Ik Hebben Kan",
+    "uri": "spotify:track:1buASziRLNHXcTVYFWZ8EK",
+    "explicit": false,
+    "duration_ms": 253893,
+    "track_number": 2,
+    "external_url": "https://open.spotify.com/track/1buASziRLNHXcTVYFWZ8EK",
+    "album": {
+      "id": "198mMFxiYJihAoJzn7cRO6",
+      "name": "Boven",
+      "release_date": "1999-01-01",
+      "total_tracks": 16,
+      "uri": "spotify:album:198mMFxiYJihAoJzn7cRO6",
+      "images": [
+        { "url": "https://picsum.photos/seed/2/300/300" }
       ]
     }
   }

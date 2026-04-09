@@ -1,51 +1,108 @@
 .btn-wrapper {
-    --background-color: hotpink;
+    --text-color: var(--color-light);
+    --background-color: var(--color-pink);
+    --shadow-color: var(--color-dark);
+    --button-height: 2rem;
 
     display: inline-flex;
     align-items: center;
     position: relative;
-    filter: drop-shadow(1px 0 0 black)
-        drop-shadow(-1px 0 0 black)
-        drop-shadow(0 1px 0 black)
-        drop-shadow(0 -1px 0 black)
-        drop-shadow(0 2px 0 black);
+    filter: drop-shadow(1px 0 0 var(--shadow-color))
+        drop-shadow(-1px 0 0 var(--shadow-color))
+        drop-shadow(0 1px 0 var(--shadow-color))
+        drop-shadow(0 -1px 0 var(--shadow-color))
+        drop-shadow(0 2px 0 var(--shadow-color));
+
+    .icon {
+        display: inline;
+    }
+
+    .active-icon {
+        display: none;
+    }
 
     &:has(button:active) {
-        filter: drop-shadow(2px 0 0 black)
-            drop-shadow(-1px 0 0 black)
-            drop-shadow(0 1px 0 black)
-            drop-shadow(0 -1px 0 black);
+        filter: drop-shadow(2px 0 0 var(--shadow-color))
+            drop-shadow(-1px 0 0 var(--shadow-color))
+            drop-shadow(0 1px 0 var(--shadow-color))
+            drop-shadow(0 -1px 0 var(--shadow-color));
         transform: translateY(1px)
     }
+
+    &:has(img) {
+        --button-height: 6rem;
+    }
+
+    &.is-active {
+        .icon {
+            display: none;
+        }
+
+        .active-icon {
+            display: inline;
+        }
+    }
 }
+
+
 
 .btn-wrapper::before,
 .btn-wrapper::after {
     content: '';
     display: block;
-    height: 2rem;
+    height: var(--button-height);
     aspect-ratio: 1/2;
     background-color: var(--background-color);
     mask-image: url(../../assets/svgs/circle-pixel.svg);
     mask-size: 100% 100%;
-
 }
 
 .btn-wrapper::after {
     transform: scaleX(-1);
 }
 
+.button-inside {
+    display: grid;
+}
+
 button {
     background: var(--background-color);
+    color: var(--text-color);
     border: none;
-    height: 2rem;
+    height: var(--button-height);
     cursor: pointer;
+    grid-column: 1;
+    grid-row: 1;
+
+    svg {
+        --svg-size: calc(.25 * var(--button-height));
+
+        height: var(--svg-size);
+        width: var(--svg-size);
+
+        filter: drop-shadow(2px 0 0 var(--shadow-color))
+            drop-shadow(-2px 0 0 var(--shadow-color))
+            drop-shadow(0 2px 0 var(--shadow-color))
+            drop-shadow(0 -2px 0 var(--shadow-color))
+            drop-shadow(0 2px 0 var(--shadow-color));
+    }
+}
+
+.button-background {
+    grid-column: 1;
+    grid-row: 1;
+    height: var(--button-height);
 }
 
 .transparent {
     --transparent: true;
     --background-color: transparent;
     filter: none;
+
+    &:has(button:active) {
+        filter: none;
+        transform: none;
+    }
 }
 
 @container style(--transparent: true) {
@@ -53,6 +110,4 @@ button {
     .btn-wrapper::after {
         display: none;
     }
-
-
 }

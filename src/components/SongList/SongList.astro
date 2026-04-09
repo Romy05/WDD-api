@@ -1,0 +1,122 @@
+---
+import Song from '../Song/Song.astro';
+import SongPreview from '../SongPreview/SongPreview.astro';
+
+import './songList.css';
+
+const { songs } = Astro.props;
+---
+
+<ul data-active-song="">
+    {
+        songs.map((song) => {
+            return (
+                <li class="song-item">
+                    <Song song={song} key={song.id}/>
+                </li>
+            )
+        })
+    }
+</ul>
+
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+<script is:inline>
+    let pipWindow;
+    let currentUri = null;
+    let embedController = null;
+
+    const playButtons = document.querySelectorAll('.play-button')
+    if (playButtons) {
+        const songItems = []
+        playButtons.forEach((button, index) => {
+            const songItem = button.closest('.song-item');
+            songItems.push(songItem);
+            button.addEventListener('click', async (event) => { await setActiveSong(event, songItems, index) });
+        })
+    }
+
+    // iframe switcht van liedje met behulp van AI
+    // https://claude.ai/share/8eedb4a4-9670-44f5-a079-bd85e8e2c486
+
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        const element = document.getElementById('embed-iframe');
+        const options = {
+            width: '300',
+            height: '50%',
+            uri: ''
+        };
+        const callback = (controller) => {
+            embedController = controller;
+            if (currentUri) {
+                embedController.loadUri(currentUri);
+            }
+        };
+        IFrameAPI.createController(element, options, callback);
+    };
+
+    async function setActiveSong(event, songItems, currentIndex) {
+        const currentButton = event.currentTarget;
+        const currentSongItem = currentButton.closest('.song-item');
+        const currentButtonWrapper = currentButton.closest('.btn-wrapper');
+
+        songItems.forEach((songItem, index) => {
+            if ((index === currentIndex) || !songItem.classList.contains('is-active') ) {
+                return;
+            }
+
+            setSongInactive(songItem);
+        });
+
+        currentButtonWrapper.classList.toggle('is-active');
+        currentSongItem.classList.toggle('is-active');
+
+        // Haal de URI op van het aangeklikte liedje
+        const uri = currentSongItem.querySelector('.song-container').getAttribute('data-uri');
+        currentUri = uri;
+
+        if (embedController) {
+            // Controller bestaat al → wissel gewoon van liedje
+            embedController.loadUri(uri);
+        }
+
+        await togglePiPWindow(songItems[currentIndex]);
+    }
+
+    function setSongInactive(songItem) {
+        const songItemPlayButton = songItem.querySelector('.play-button');
+        const playButtonWrapper = songItemPlayButton.closest('.btn-wrapper');
+        playButtonWrapper.classList.remove('is-active');
+        songItem.classList.remove('is-active');
+    }
+
+    async function togglePiPWindow(songItem) {
+
+        if (!songItem.classList.contains('is-active') && pipWindow) {
+            pipWindow.close();
+            return;
+        }
+
+        pipWindow = await documentPictureInPicture.requestWindow({
+            width: 300,
+            height: 75,
+            disallowReturnToOpener: true
+        });
+
+        const element = document.getElementById('iframe-wrapper');
+        const style = document.createElement('style');
+        style.textContent = 'body{margin: 0; overflow: hidden;}'
+
+        pipWindow.addEventListener('pagehide', () => {
+            const body = document.querySelector('body');
+            body.append(element);
+
+            setSongInactive(songItem);
+        })
+
+        pipWindow.document.body.append(style);
+        pipWindow.document.body.append(element);
+    }
+
+</script>
+
+

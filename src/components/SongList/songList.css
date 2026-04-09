@@ -1,0 +1,42 @@
+ul {
+    counter-reset: song-counter;
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    padding-inline: 1rem;
+    gap: 1rem;
+    align-items: center;
+    border: 2px solid black;
+    counter-increment: song-counter;
+
+    &.is-active {
+        &::before {
+            color: var(--color-pink);
+            animation-play-state: running;
+        }
+    }
+}
+
+li::before {
+    content: counter(song-counter)".";
+    text-decoration: underline;
+
+    font-family: 'Furnitur', sans-serif;
+    font-size: clamp(3rem, 7.5vw, 6rem);
+    font-variation-settings: 'VRTC' 61;
+    animation: --animateNumber 1s alternate linear infinite paused;
+}
+
+@keyframes --animateNumber {
+    0% {
+        transform: translateY(5px);
+        font-variation-settings: 'VRTC' 50, 'HRZN' 10;
+    }
+    100% {
+        transform: none;
+        font-variation-settings: 'VRTC' 90, 'HRZN' 50;
+    }
+}

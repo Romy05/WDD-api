@@ -1,0 +1,26 @@
+@import 'typography.css';
+
+:root {
+    --color-dark: #000;
+    --color-pink: #e64ccf;
+    --color-light: #fff;
+    --font-primary: 'Roboto', sans-serif;
+
+    /* spacing */
+    --padding-inline: clamp(1rem, 2.5vw, 2rem);
+    --padding-block: clamp(2rem, 5vw, 4rem);
+    --gap: clamp(1rem, 2.5vw, 2rem);
+
+
+    --color-text: var(--color-dark);
+    --color-background: var(--color-light);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+
+}
