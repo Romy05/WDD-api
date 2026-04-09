@@ -3,11 +3,9 @@
     align-items: center;
 
     gap: 1rem;
-    background: pink;
-
 }
 
 .album-cover {
-    width: 4rem;
+    width: 6rem;
     aspect-ratio: 1;
 }

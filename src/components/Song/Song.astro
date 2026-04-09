@@ -1,13 +1,21 @@
 ---
-const { song } = Astro.props;
+import Button from '../Button/Button.astro'
 
 import './song.css';
+
+const { song, isInsidePlaylist } = Astro.props;
+const albumCoverUrl = song.album.images[0].url;
 ---
 
 <div class="song-container">
-    <img class="album-cover" src={song.album.images[0].url} alt="album cover">
+    <img class="album-cover" src={albumCoverUrl} alt="album cover">
     <span>{song.name}</span>
-    <button>Play/Pause</button>
-    <button>Add</button>
-    <button>Remove</button>
+    <Button backgroundUrl={albumCoverUrl} text="Play" hideText icon="PlayPixel"/>
+
+    {
+        isInsidePlaylist
+            ? <Button text="Remove" />
+            : <Button text="Add" />
+    }
+
 </div>

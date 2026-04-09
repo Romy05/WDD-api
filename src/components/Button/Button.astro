@@ -1,0 +1,34 @@
+---
+import './button.css';
+import * as SVGs from '../../assets/svgs';
+
+const {
+    icon,
+    text,
+    hideText,
+    transparent,
+    backgroundUrl
+} = Astro.props;
+
+const Icon = SVGs[icon];
+
+//Inladen van Icons met behulp van Cyd & stack overflow https://stackoverflow.com/questions/76985138/any-way-to-init-an-astro-component-by-string
+
+const classNames = 'btn-wrapper ' + (transparent ? 'transparent' : '');
+---
+
+<div class={classNames}>
+    <button title={text}>
+        {icon &&
+            <Icon />
+        }
+        {!hideText && text}
+    </button>
+</div>
+
+<script>
+    const button = document.querySelector('.btn-wrapper button');
+    button.addEventListener('click', () => {
+        console.log('geklikt!');
+    });
+</script>

@@ -1,0 +1,58 @@
+.btn-wrapper {
+    --background-color: hotpink;
+
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    filter: drop-shadow(1px 0 0 black)
+        drop-shadow(-1px 0 0 black)
+        drop-shadow(0 1px 0 black)
+        drop-shadow(0 -1px 0 black)
+        drop-shadow(0 2px 0 black);
+
+    &:has(button:active) {
+        filter: drop-shadow(2px 0 0 black)
+            drop-shadow(-1px 0 0 black)
+            drop-shadow(0 1px 0 black)
+            drop-shadow(0 -1px 0 black);
+        transform: translateY(1px)
+    }
+}
+
+.btn-wrapper::before,
+.btn-wrapper::after {
+    content: '';
+    display: block;
+    height: 2rem;
+    aspect-ratio: 1/2;
+    background-color: var(--background-color);
+    mask-image: url(../../assets/svgs/circle-pixel.svg);
+    mask-size: 100% 100%;
+
+}
+
+.btn-wrapper::after {
+    transform: scaleX(-1);
+}
+
+button {
+    background: var(--background-color);
+    border: none;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.transparent {
+    --transparent: true;
+    --background-color: transparent;
+    filter: none;
+}
+
+@container style(--transparent: true) {
+    .btn-wrapper::before,
+    .btn-wrapper::after {
+        display: none;
+    }
+
+
+}

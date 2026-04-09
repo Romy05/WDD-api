@@ -9,6 +9,10 @@ een aantal nummer suggesteer, waarmee de gebruiker kan zeggen of hij/zij deze in
 Na het gesprek met mijn clubje en Cyd ben ik tot de conclusie gekomen dat de beste eerstvolgende stap is:
 Het toevoegen van de Spotify/playlist functionaliteit zonder dat dit gekoppeld is aan de web AI of videogame API
 
+## Checkout 8-4-2026 
+Vandaag heb ik button components gemaakt voor mijn website en Icon components, hier ben ik zo'n 3.5 uur mee bezig geweest.
+Ook heb ik dummy songs toegevoegd voor tijdens het developen, omdat ik er tegenaanliep dat ik een timeout kreeg van de spotify api :(
+Morgen wil ik verder gaan met het maken van het song component en het playlist component.
 
 # Stijl inspiratie
 

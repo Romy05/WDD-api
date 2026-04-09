@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Blinding Lights",
+    "album": {
+      "images": [
+        { "url": "https://picsum.photos/seed/1/300/300" }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Stay",
+    "album": {
+      "images": [
+        { "url": "https://picsum.photos/seed/2/300/300" }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Levitating",
+    "album": {
+      "images": [
+        { "url": "https://picsum.photos/seed/3/300/300" }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Peaches",
+    "album": {
+      "images": [
+        { "url": "https://picsum.photos/seed/4/300/300" }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "name": "Good 4 U",
+    "album": {
+      "images": [
+        { "url": "https://picsum.photos/seed/5/300/300" }
+      ]
+    }
+  }
+]
