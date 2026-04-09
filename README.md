@@ -14,6 +14,13 @@ Vandaag heb ik button components gemaakt voor mijn website en Icon components, h
 Ook heb ik dummy songs toegevoegd voor tijdens het developen, omdat ik er tegenaanliep dat ik een timeout kreeg van de spotify api :(
 Morgen wil ik verder gaan met het maken van het song component en het playlist component.
 
+## Checkout 9-4-2026
+Vandaag heb ik de Document Picture in Picture web api gebruikt om een iframe in te laden wanneer een liedje wordt afgespeeld.
+Om het geselecteerde nummer duidelijker te maken heb ik een animatie toegevoegd met een variabel font en en kleur gegeven aan het nummer.
+Omdat ik er gister tegenaanliep dat ik een timeout kreeg heb ik voor de zekerheid een lijst met dummy liedjes toegevoegd voor tijdens het ontwikkelen.
+
+<img src="public/images/voortgang1.png" />
+
 # Stijl inspiratie
 
 Na het maken van de projecten voor CSS en BT, ben ik er achter gekomen dat het handig is om eerst een moodboard te maken.
