@@ -9,3 +9,17 @@
     width: 6rem;
     aspect-ratio: 1;
 }
+
+.song-description {
+    display: flex;
+    gap: .25rem;
+    flex-direction: column;
+}
+
+.song-name {
+    font-weight: 700;
+}
+
+.artists {
+    font-size: .9em;
+}

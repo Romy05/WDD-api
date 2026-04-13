@@ -41,7 +41,7 @@ const { songs } = Astro.props;
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
         const element = document.getElementById('embed-iframe');
         const options = {
-            width: '300',
+            width: '100%',
             height: '50%',
             uri: ''
         };
@@ -94,6 +94,12 @@ const { songs } = Astro.props;
         if (!songItem.classList.contains('is-active') && pipWindow) {
             pipWindow.close();
             return;
+        }
+
+        if (embedController) {
+            setTimeout(() => {
+                embedController.play();
+            },500)
         }
 
         pipWindow = await documentPictureInPicture.requestWindow({

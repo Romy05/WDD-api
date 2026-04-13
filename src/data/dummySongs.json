@@ -2,6 +2,9 @@
   {
     "id": "2HRqTpkrJO5ggZyyK6NPWz",
     "name": "Espresso",
+    "artists": [
+      { "name": "Sabrina Carpenter", "id": "6qieFg9YStUjLfs67vCNv9" }
+    ],
     "uri": "spotify:track:2HRqTpkrJO5ggZyyK6NPWz",
     "explicit": true,
     "duration_ms": 175459,
@@ -13,14 +16,15 @@
       "release_date": "2024-08-23",
       "total_tracks": 12,
       "uri": "spotify:album:3iPSVi54hsacKKl1xIR2eH",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "6O5TrlFWTYvznd9fMC0VvU",
     "name": "When We Were Young",
+    "artists": [
+      { "name": "Adele", "id": "4dpARuHxo51G3z768STrnp" }
+    ],
     "uri": "spotify:track:6O5TrlFWTYvznd9fMC0VvU",
     "explicit": false,
     "duration_ms": 290900,
@@ -32,14 +36,15 @@
       "release_date": "2015-11-20",
       "total_tracks": 11,
       "uri": "spotify:album:6TVfiWmo8KtflUAmkK9gGF",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "6aoJh8zwnee5dwdAo9L85D",
     "name": "Zoo - From \"Zootropolis 2\"",
+    "artists": [
+      { "name": "Shakira", "id": "0EmeFmhcAFmST60o4UoW0C" }
+    ],
     "uri": "spotify:track:6aoJh8zwnee5dwdAo9L85D",
     "explicit": false,
     "duration_ms": 190822,
@@ -51,14 +56,15 @@
       "release_date": "2025-10-10",
       "total_tracks": 1,
       "uri": "spotify:album:34EJWqwMzUmse8388uSpgr",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "6SxPeeIm0exX9vXLZMZn2J",
     "name": "Loser",
+    "artists": [
+      { "name": "Kansel", "id": "5Yat8Y8p9hWw4PzT6VfM6K" }
+    ],
     "uri": "spotify:track:6SxPeeIm0exX9vXLZMZn2J",
     "explicit": false,
     "duration_ms": 163520,
@@ -70,14 +76,16 @@
       "release_date": "2025-11-14",
       "total_tracks": 4,
       "uri": "spotify:album:2cCRxb2mWYNWAL7KNMoL95",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "2bJvI42r8EF3wxjOuDav4r",
     "name": "Time of Our Lives",
+    "artists": [
+      { "name": "Pitbull", "id": "0TnOYISbd1XYRBk9myaseg" },
+      { "name": "Ne-Yo", "id": "21SdhX8n7uWNoj9YmREIuX" }
+    ],
     "uri": "spotify:track:2bJvI42r8EF3wxjOuDav4r",
     "explicit": true,
     "duration_ms": 229358,
@@ -89,14 +97,15 @@
       "release_date": "2014-11-24",
       "total_tracks": 11,
       "uri": "spotify:album:4EUf4YyNjuXypWY6W5wEDm",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "2mdEsXPu8ZmkHRRtAdC09e",
     "name": "Cinnamon Girl",
+    "artists": [
+      { "name": "Lana Del Rey", "id": "00FQOEpxuG64uGv0bS0u6t" }
+    ],
     "uri": "spotify:track:2mdEsXPu8ZmkHRRtAdC09e",
     "explicit": false,
     "duration_ms": 300683,
@@ -108,14 +117,15 @@
       "release_date": "2019-08-30",
       "total_tracks": 14,
       "uri": "spotify:album:5XpEKORZ4y6OrCZSKsi46A",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "0HWjXL4layDbYbCj21uzd8",
     "name": "Moët Dat Nou",
+    "artists": [
+      { "name": "Bankzitters", "id": "2S6p6GIsE70NfT0vL8f6pS" }
+    ],
     "uri": "spotify:track:0HWjXL4layDbYbCj21uzd8",
     "explicit": false,
     "duration_ms": 154691,
@@ -127,14 +137,16 @@
       "release_date": "2026-01-08",
       "total_tracks": 1,
       "uri": "spotify:album:7F5D4dM8ANyl1zY5V7knze",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "3ebXMykcMXOcLeJ9xZ17XH",
     "name": "Scared to Be Lonely",
+    "artists": [
+      { "name": "Martin Garrix", "id": "60d24wfXkVIV9cmI6biBrv" },
+      { "name": "Dua Lipa", "id": "6M2wZ9GZIrURuIAsu2mB69" }
+    ],
     "uri": "spotify:track:3ebXMykcMXOcLeJ9xZ17XH",
     "explicit": false,
     "duration_ms": 220883,
@@ -146,14 +158,16 @@
       "release_date": "2017-01-27",
       "total_tracks": 1,
       "uri": "spotify:album:2v9rQe4F8fVSh5v8bAq0jF",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "0TwBtDAWpkpM3srywFVOV5",
     "name": "Crazy In Love (feat. JAY-Z)",
+    "artists": [
+      { "name": "Beyoncé", "id": "6vWfR0yS6UuAs999Y6S77A" },
+      { "name": "JAY-Z", "id": "3nFmSfyR16oBCOo6u99CJD" }
+    ],
     "uri": "spotify:track:0TwBtDAWpkpM3srywFVOV5",
     "explicit": false,
     "duration_ms": 235933,
@@ -165,14 +179,26 @@
       "release_date": "2003-03-10",
       "total_tracks": 16,
       "uri": "spotify:album:06v9eHnqhMK2tbM2Iz3p0Y",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   },
   {
     "id": "1buASziRLNHXcTVYFWZ8EK",
     "name": "Harder Dan Ik Hebben Kan",
+    "artists": [
+      {
+        "id": "0KQX2wRHV2VLjuscfJFNxB",
+        "name": "BLØF",
+        "type": "artist",
+        "uri": "spotify:artist:0KQX2wRHV2VLjuscfJFNxB"
+      },
+      {
+        "id": "30mNTnmvPn3HwXA5dW1Iza",
+        "name": "Racoon",
+        "type": "artist",
+        "uri": "spotify:artist:30mNTnmvPn3HwXA5dW1Iza"
+      }
+    ],
     "uri": "spotify:track:1buASziRLNHXcTVYFWZ8EK",
     "explicit": false,
     "duration_ms": 253893,
@@ -184,9 +210,7 @@
       "release_date": "1999-01-01",
       "total_tracks": 16,
       "uri": "spotify:album:198mMFxiYJihAoJzn7cRO6",
-      "images": [
-        { "url": "https://picsum.photos/seed/2/300/300" }
-      ]
+      "images": [{ "url": "https://picsum.photos/seed/2/300/300" }]
     }
   }
 ]

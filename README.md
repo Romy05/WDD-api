@@ -21,7 +21,19 @@ Omdat ik er gister tegenaanliep dat ik een timeout kreeg heb ik voor de zekerhei
 
 <img src="public/images/voortgang1.png" />
 
+## Weekly checkout 10-4-2026
+Vandaag heb ik feedback ontvangen op mijn werk wat ik tot nu toe heb.
+
+Volgende week wil ik gaan kijken naar: 
+- Het implementeren van een spotify player die de liedjes automatisch afspeelt en deze in de PiP zetten.
+- OF een playlist in de PiP zetten.
+- OF een playlist ergens anders op de pagina zetten die in realtime update als je iets toevoegt.
+- Een 'add playlist to spotify button' toevoegen zodat ik niet meerdere calls iedere keer naar de spotify api doe, maar 1 call doe.
+- Inspiratie opzoeken en kijken naar andere web players.
+
 # Stijl inspiratie
+View transitions als nummer naar playlist gaat,
+Document pip voor playlist weergave
 
 Na het maken van de projecten voor CSS en BT, ben ik er achter gekomen dat het handig is om eerst een moodboard te maken.
 Hierdoor denk ik bewuster na over wat ik ga maken en of het bij de stijl past. Hier vind je mijn inspiratiebronnen voor dit project.

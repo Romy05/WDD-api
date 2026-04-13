@@ -5,6 +5,7 @@ import './song.css';
 
 const { song, isInsidePlaylist } = Astro.props;
 const albumCoverUrl = song.album.images[0].url || '';
+console.log(song);
 ---
 
 <div data-uri={song.uri} class="song-container">
@@ -18,7 +19,19 @@ const albumCoverUrl = song.album.images[0].url || '';
         activeIcon="PausePixel"
     />
 
-    <span>{song.name}</span>
+    <div class="song-description">
+        <span class="song-name">{song.name}</span>
+        <div class="artists">
+            {
+                song.artists.map(artist => {
+                    return (
+                    <span class="artist-name">{`${artist.name}, `}</span>
+                    );
+                })
+            }
+        </div>
+    </div>
+
 
     {   isInsidePlaylist
             ? <Button text="Remove" />
