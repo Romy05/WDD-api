@@ -7,7 +7,7 @@ import './songList.css';
 const { songs } = Astro.props;
 ---
 
-<ul data-active-song="">
+<ul class="song-list" data-active-song="">
     {
         songs.map((song) => {
             return (
@@ -22,7 +22,6 @@ const { songs } = Astro.props;
 <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 <script is:inline>
     let pipWindow;
-    let currentUri = null;
     let embedController = null;
 
     const playButtons = document.querySelectorAll('.play-button')
@@ -31,7 +30,13 @@ const { songs } = Astro.props;
         playButtons.forEach((button, index) => {
             const songItem = button.closest('.song-item');
             songItems.push(songItem);
-            button.addEventListener('click', async (event) => { await setActiveSong(event, songItems, index) });
+            button.addEventListener('click', async (event) => {
+                if (button.closest('.song-item').classList.contains('is-active')) {
+                    pauseActiveSong(event);
+                    return;
+                }
+                await setActiveSong(event, index, songItems);
+            });
         })
     }
 
@@ -42,22 +47,36 @@ const { songs } = Astro.props;
         const element = document.getElementById('embed-iframe');
         const options = {
             width: '100%',
-            height: '50%',
-            uri: ''
+            height: '80px',
+            uri: null
         };
         const callback = (controller) => {
             embedController = controller;
-            if (currentUri) {
-                embedController.loadUri(currentUri);
-            }
         };
         IFrameAPI.createController(element, options, callback);
     };
 
-    async function setActiveSong(event, songItems, currentIndex) {
+    function pauseActiveSong(event) {
+        if (embedController) {
+            embedController.pause();
+        }
+
         const currentButton = event.currentTarget;
         const currentSongItem = currentButton.closest('.song-item');
         const currentButtonWrapper = currentButton.closest('.btn-wrapper');
+        currentButtonWrapper.classList.toggle('is-active');
+        currentSongItem.classList.toggle('is-active');
+    }
+
+    async function setActiveSong(event, currentIndex,songItems) {
+        const currentButton = event.currentTarget;
+        const currentSongItem = currentButton.closest('.song-item');
+        const currentButtonWrapper = currentButton.closest('.btn-wrapper');
+        const iframeContainer = document.getElementById('iframe-wrapper');
+
+        // Haal de URI op van het aangeklikte liedje
+        const uri = currentSongItem.querySelector('.song-container').getAttribute('data-uri');
+        currentUri = uri;
 
         songItems.forEach((songItem, index) => {
             if ((index === currentIndex) || !songItem.classList.contains('is-active') ) {
@@ -67,19 +86,15 @@ const { songs } = Astro.props;
             setSongInactive(songItem);
         });
 
-        currentButtonWrapper.classList.toggle('is-active');
-        currentSongItem.classList.toggle('is-active');
-
-        // Haal de URI op van het aangeklikte liedje
-        const uri = currentSongItem.querySelector('.song-container').getAttribute('data-uri');
-        currentUri = uri;
-
         if (embedController) {
             // Controller bestaat al → wissel gewoon van liedje
             embedController.loadUri(uri);
+            iframeContainer.classList.add('active-song');
+            embedController.play();
         }
 
-        await togglePiPWindow(songItems[currentIndex]);
+        currentButtonWrapper.classList.toggle('is-active');
+        currentSongItem.classList.toggle('is-active');
     }
 
     function setSongInactive(songItem) {
@@ -108,7 +123,8 @@ const { songs } = Astro.props;
             disallowReturnToOpener: true
         });
 
-        const element = document.getElementById('iframe-wrapper');
+        //@TODO: Zet hier dus het element wat ik in de document pip wil.
+        //const element =
         const style = document.createElement('style');
         style.textContent = 'body{margin: 0; overflow: hidden;}'
 
@@ -120,7 +136,7 @@ const { songs } = Astro.props;
         })
 
         pipWindow.document.body.append(style);
-        pipWindow.document.body.append(element);
+        //pipWindow.document.body.append(element);
     }
 
 </script>

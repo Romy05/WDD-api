@@ -1,6 +1,15 @@
 #iframe-wrapper {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 0;
+    iframe {
+        display: none;
+    }
+
+    &.active-song {
+        .placeholder {
+            display: none;
+        }
+
+        iframe {
+            display: block;
+        }
+    }
 }

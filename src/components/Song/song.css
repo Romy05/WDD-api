@@ -23,3 +23,32 @@
 .artists {
     font-size: .9em;
 }
+
+.vinyl-record {
+    --size: 6rem;
+    height: var(--size);
+    aspect-ratio: 1/1;
+
+    background-image: radial-gradient(
+        #fff 0 7.5%,
+        transparent 0 19%,
+        #000 21%,
+        transparent 0 35%,
+        #000 36%,
+        transparent 0 40%,
+        #000 41%,
+        transparent 0 51%,
+        #000 52%,
+        transparent 0 60%,
+        #fff 0 100%
+    ), linear-gradient(-45deg,
+        transparent 40%,
+        grey 50%,
+        transparent 60% 100%
+    ), radial-gradient(
+        transparent 7.5%,
+        #000000 0 60%,
+        transparent 0 100%
+    );
+
+}

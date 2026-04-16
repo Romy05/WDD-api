@@ -6,6 +6,7 @@ import {
 } from '../api/index.js';
 import SongList from '../components/SongList/SongList.astro';
 import SongPreview from '../components/SongPreview/SongPreview.astro';
+import Nav from '../components/Nav/Nav.astro';
 import PlayList from '../components/Playlist/Playlist.astro';
 
 import '../style/index.css';
@@ -34,11 +35,12 @@ import songs from '../data/dummySongs.json';
 	</head>
 
 	<body>
+		<Nav />
+	
+		<SongPreview />
 
 		<SongList songs={songs} />
 
 		<PlayList songs={songs} />
-
-		<SongPreview />
 	</body>
 </html>
