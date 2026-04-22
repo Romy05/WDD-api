@@ -11,10 +11,23 @@
     color: inherit;
 }
 
+.logo {
+    text-decoration: none;
+    * {
+        animation: --animate-letters 4s linear alternate infinite;
+        font-family: 'Furnitur', sans-serif;
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-variation-settings: 'VRTC' 61;
+    }
+
+    span {
+        animation-delay: calc(sibling-index() * -1s)
+    }
+}
+
 .large-heading {
-    font-family: 'Furnitur', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: clamp(2rem, 5vw, 4rem);
-    font-variation-settings: 'VRTC' 61;
 }
 
 .medium-heading {
@@ -29,8 +42,13 @@
     line-height: 1.2;
 }
 
-.text-content-spacing {
-    > * + * {
-        margin-top: 1em;
+@keyframes --animate-letters {
+    0% {
+        transform: translateY(10px);
+        font-variation-settings: 'VRTC' 40, 'HRZN' 0;
+    }
+    100% {
+        transform: none;
+        font-variation-settings: 'VRTC' 90, 'HRZN' 50;
     }
 }

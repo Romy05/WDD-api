@@ -3,6 +3,13 @@
         display: none;
     }
 
+    .placeholder {
+        width: 100%;
+        height: 5em;
+        border: var(--color-dark) 2px solid;
+        border-radius: 2px;
+    }
+
     &.active-song {
         .placeholder {
             display: none;
