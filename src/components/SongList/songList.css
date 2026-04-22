@@ -2,6 +2,9 @@
     counter-reset: song-counter;
     list-style-type: none;
     padding: 0;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
 
     li {
         display: flex;
@@ -20,11 +23,14 @@
     }
 
     li::before {
+        text-align: center;
         content: counter(song-counter)".";
         text-decoration: underline;
+        min-width: 4rem;
+        max-width: 4rem;
 
         font-family: 'Furnitur', sans-serif;
-        font-size: clamp(3rem, 7.5vw, 6rem);
+        font-size: clamp(2rem, 5vw, 4rem);
         font-variation-settings: 'VRTC' 61;
         animation: --animateNumber 1s alternate linear infinite paused;
     }

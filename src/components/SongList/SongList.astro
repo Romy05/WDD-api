@@ -19,12 +19,16 @@ const { songs } = Astro.props;
     }
 </ul>
 
-<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+
 <script is:inline>
-    let pipWindow;
     let embedController = null;
 
-    const playButtons = document.querySelectorAll('.play-button')
+    window.addEventListener('song-controller-ready', (e) => {
+        console.log('controller', e.detail.controller);
+        embedController = e.detail.controller;
+    });
+
+    const playButtons = document.querySelectorAll('.play-button');
     if (playButtons) {
         const songItems = []
         playButtons.forEach((button, index) => {
@@ -43,19 +47,6 @@ const { songs } = Astro.props;
     // iframe switcht van liedje met behulp van AI
     // https://claude.ai/share/8eedb4a4-9670-44f5-a079-bd85e8e2c486
 
-    window.onSpotifyIframeApiReady = (IFrameAPI) => {
-        const element = document.getElementById('embed-iframe');
-        const options = {
-            width: '100%',
-            height: '80px',
-            uri: null
-        };
-        const callback = (controller) => {
-            embedController = controller;
-        };
-        IFrameAPI.createController(element, options, callback);
-    };
-
     function pauseActiveSong(event) {
         if (embedController) {
             embedController.pause();
@@ -64,15 +55,19 @@ const { songs } = Astro.props;
         const currentButton = event.currentTarget;
         const currentSongItem = currentButton.closest('.song-item');
         const currentButtonWrapper = currentButton.closest('.btn-wrapper');
+        const currentVinyl = currentSongItem.querySelector('.vinyl-record');
+
         currentButtonWrapper.classList.toggle('is-active');
         currentSongItem.classList.toggle('is-active');
+        currentVinyl.classList.toggle('is-active');
     }
 
     async function setActiveSong(event, currentIndex,songItems) {
         const currentButton = event.currentTarget;
         const currentSongItem = currentButton.closest('.song-item');
         const currentButtonWrapper = currentButton.closest('.btn-wrapper');
-        const iframeContainer = document.getElementById('iframe-wrapper');
+        const currentVinyl = currentSongItem.querySelector('.vinyl-record');
+        const iframeContainer = document.getElementById('song-iframe-wrapper');
 
         // Haal de URI op van het aangeklikte liedje
         const uri = currentSongItem.querySelector('.song-container').getAttribute('data-uri');
@@ -95,48 +90,16 @@ const { songs } = Astro.props;
 
         currentButtonWrapper.classList.toggle('is-active');
         currentSongItem.classList.toggle('is-active');
+        currentVinyl.classList.toggle('is-active');
     }
 
     function setSongInactive(songItem) {
         const songItemPlayButton = songItem.querySelector('.play-button');
         const playButtonWrapper = songItemPlayButton.closest('.btn-wrapper');
+        const vinyl = songItem.querySelector('.vinyl-record');
         playButtonWrapper.classList.remove('is-active');
         songItem.classList.remove('is-active');
-    }
-
-    async function togglePiPWindow(songItem) {
-
-        if (!songItem.classList.contains('is-active') && pipWindow) {
-            pipWindow.close();
-            return;
-        }
-
-        if (embedController) {
-            setTimeout(() => {
-                embedController.play();
-            },500)
-        }
-
-        pipWindow = await documentPictureInPicture.requestWindow({
-            width: 300,
-            height: 75,
-            disallowReturnToOpener: true
-        });
-
-        //@TODO: Zet hier dus het element wat ik in de document pip wil.
-        //const element =
-        const style = document.createElement('style');
-        style.textContent = 'body{margin: 0; overflow: hidden;}'
-
-        pipWindow.addEventListener('pagehide', () => {
-            const body = document.querySelector('body');
-            body.append(element);
-
-            setSongInactive(songItem);
-        })
-
-        pipWindow.document.body.append(style);
-        //pipWindow.document.body.append(element);
+        vinyl.classList.remove('is-active');
     }
 
 </script>

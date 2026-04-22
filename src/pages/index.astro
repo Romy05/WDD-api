@@ -4,9 +4,10 @@ import {
 	fetchSpotifyTrackByArtist,
 	fetchSuggestedGamesBySearch
 } from '../api/index.js';
+import MainLayout from '../layouts/MainLayout.astro';
 import SongList from '../components/SongList/SongList.astro';
 import SongPreview from '../components/SongPreview/SongPreview.astro';
-import Nav from '../components/Nav/Nav.astro';
+import PlayListPreview from '../components/PlayListPreview/PlayListPreview.astro';
 import PlayList from '../components/Playlist/Playlist.astro';
 
 import '../style/index.css';
@@ -23,24 +24,72 @@ import '../style/index.css';
 import songs from '../data/dummySongs.json';
 ---
 
-<html lang="en">
 
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-
-	<body>
-		<Nav />
-	
+<MainLayout title="Songerator">
 		<SongPreview />
 
 		<SongList songs={songs} />
 
 		<PlayList songs={songs} />
-	</body>
-</html>
+
+		<PlayListPreview />
+</MainLayout>
+
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+<script is:inline>
+	let pipWindow;
+
+	// Gebruik van dispatch event met behulp van AI https://claude.ai/share/e9a554ec-32c7-49c9-98f6-5cae9f4c2a1d
+
+	window.onSpotifyIframeApiReady = (IFrameAPI) => {
+		const songElement = document.getElementById('embed-iframe-song');
+		const playListElement = document.getElementById('embed-iframe-playlist');
+		const songOptions = {
+			width: '100%',
+			height: '80px',
+			uri: null
+		};
+		const playListOptions = {
+			uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
+		};
+		const songCallback = (controller) => {
+			window.dispatchEvent(new CustomEvent('song-controller-ready', {
+				detail: { controller }
+			}));
+		};
+		const playListCallback = (controller) => {
+			window.dispatchEvent(new CustomEvent('playlist-controller-ready',{
+				detail: { controller }
+			}));
+		};
+		IFrameAPI.createController(songElement, songOptions, songCallback);
+		IFrameAPI.createController(playListElement, playListOptions, playListCallback);
+	};
+
+
+
+	async function togglePiPWindow() {
+
+		pipWindow = await documentPictureInPicture.requestWindow({
+			width: 300,
+			height: 75,
+			disallowReturnToOpener: true
+		});
+
+		//@TODO: Zet hier dus het element wat ik in de document pip wil.
+		//const element =
+		const style = document.createElement('style');
+		style.textContent = 'body{margin: 0; overflow: hidden;}'
+
+		pipWindow.addEventListener('pagehide', () => {
+			const body = document.querySelector('body');
+			body.append(element);
+
+			setSongInactive(songItem);
+		})
+
+		pipWindow.document.body.append(style);
+		//pipWindow.document.body.append(element);
+	}
+
+</script>

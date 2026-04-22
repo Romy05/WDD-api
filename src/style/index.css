@@ -1,9 +1,11 @@
 @import 'typography.css';
 
 :root {
-    --color-dark: #000;
+    --color-black: #000;
+    --color-white: #fff;
+    --color-dark: #101c45;
     --color-pink: #e64ccf;
-    --color-light: #fff;
+    --color-light: #fbc5f6;
     --font-primary: 'Roboto', sans-serif;
 
     /* spacing */
@@ -13,6 +15,7 @@
 
 
     --color-text: var(--color-dark);
+    --color-button-text: var(--color-white);
     --color-background: var(--color-light);
 }
 
@@ -22,5 +25,10 @@
 }
 
 body {
+    padding: 2rem;
+    background-color: var(--color-background);
 
+    p, h1, span, li {
+        color: var(--color-text);
+    }
 }

@@ -1,7 +1,7 @@
 .btn-wrapper {
-    --text-color: var(--color-light);
+    --text-color: var(--color-button-text);
     --background-color: var(--color-pink);
-    --shadow-color: var(--color-dark);
+    --shadow-color: var(--color-black);
     --button-height: 2rem;
 
     display: inline-flex;
@@ -14,10 +14,12 @@
         drop-shadow(0 2px 0 var(--shadow-color));
 
     .icon {
+        color: var(--text-color);
         display: inline;
     }
 
     .active-icon {
+        color: var(--text-color);
         display: none;
     }
 
@@ -44,8 +46,6 @@
     }
 }
 
-
-
 .btn-wrapper::before,
 .btn-wrapper::after {
     content: '';
@@ -65,7 +65,7 @@
     display: grid;
 }
 
-button {
+.button {
     background: var(--background-color);
     color: var(--text-color);
     border: none;

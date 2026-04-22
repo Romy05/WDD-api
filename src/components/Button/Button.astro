@@ -28,7 +28,7 @@ const classNames = 'btn-wrapper ' + (hasTransparentBackground ? 'transparent ' :
                 <img class="button-background" src={backgroundUrl} alt={backgroundTitle} />
         }
 
-        <button class={`${buttonClassName}`} title={text}>
+        <button aria-label={text} class={`${buttonClassName} button`} title={text}>
             {icon &&
                     <span class="icon"><Icon /></span>
             }
