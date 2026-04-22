@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Jersey';
+    src: url("../assets/fonts/Jersey10-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 * {
     font-family: 'Roboto', sans-serif;
 
@@ -14,6 +21,7 @@
 .logo {
     text-decoration: none;
     * {
+        display: inline-block;
         animation: --animate-letters 4s linear alternate infinite;
         font-family: 'Furnitur', sans-serif;
         font-size: clamp(2rem, 5vw, 4rem);
@@ -21,22 +29,36 @@
     }
 
     span {
-        animation-delay: calc(sibling-index() * -1s)
+        animation-delay: calc(sibling-index() * -1s);
+        transition: ease-out .5s;
+        &:hover {
+            color: var(--color-pink);
+        }
     }
 }
 
 .large-heading {
-    font-family: 'Roboto', sans-serif;
-    font-size: clamp(2rem, 5vw, 4rem);
+    span {
+        display: inline-block;
+        font-family: 'Jersey', sans-serif;
+        font-size: clamp(2rem, 5vw, 4rem);
+        transition: ease-out .5s;
+        &:hover {
+            transform: translateY(-5px);
+            color: var(--color-pink);
+        }
+    }
 }
 
 .medium-heading {
+    font-family: 'Jersey', sans-serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-variation-settings: 'wght' 500;
     line-height: 1.2;
 }
 
 .small-body {
+    font-family: 'Jersey', sans-serif;
     font-size: clamp(0.75rem, 1vw, 1rem);
     font-variation-settings: 'wght' 350;
     line-height: 1.2;
@@ -44,7 +66,7 @@
 
 @keyframes --animate-letters {
     0% {
-        transform: translateY(10px);
+        transform: translateY(3px);
         font-variation-settings: 'VRTC' 40, 'HRZN' 0;
     }
     100% {

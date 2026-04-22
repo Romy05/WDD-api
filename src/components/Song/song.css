@@ -82,7 +82,7 @@
     img {
         width: 30%;
         aspect-ratio: 1;
-        mask-image: radial-gradient(transparent 0 20%, red 0 60%, transparent 0 100%);
+        mask-image: radial-gradient(transparent 0 15%, red 0 60%, transparent 0 100%);
     }
 
     &.is-active {
