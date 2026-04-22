@@ -32,7 +32,10 @@
     }
 
     &:has(img) {
-        --button-height: 6rem;
+        --button-height: 50vh;
+        button {
+            height: unset;
+        }
     }
 
     &.is-active {
@@ -63,35 +66,37 @@
 
 .button-inside {
     display: grid;
-}
+    padding-block: .5rem;
 
-.button {
-    background: var(--background-color);
-    color: var(--text-color);
-    border: none;
-    height: var(--button-height);
-    cursor: pointer;
-    grid-column: 1;
-    grid-row: 1;
+    .button {
+        background: var(--background-color);
+        color: var(--text-color);
+        border: none;
+        height: var(--button-height);
+        cursor: pointer;
+        grid-column: 1;
+        grid-row: 1;
 
-    svg {
-        --svg-size: calc(.25 * var(--button-height));
+        svg {
+            --svg-size: calc(.25 * var(--button-height));
 
-        height: var(--svg-size);
-        width: var(--svg-size);
+            height: var(--svg-size);
+            width: var(--svg-size);
 
-        filter: drop-shadow(2px 0 0 var(--shadow-color))
+            filter: drop-shadow(2px 0 0 var(--shadow-color))
             drop-shadow(-2px 0 0 var(--shadow-color))
             drop-shadow(0 2px 0 var(--shadow-color))
             drop-shadow(0 -2px 0 var(--shadow-color))
             drop-shadow(0 2px 0 var(--shadow-color));
+        }
     }
-}
 
-.button-background {
-    grid-column: 1;
-    grid-row: 1;
-    height: var(--button-height);
+    .button-background {
+        grid-column: 1;
+        grid-row: 1;
+        height: var(--button-height);
+    }
+
 }
 
 .transparent {

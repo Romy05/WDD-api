@@ -55,7 +55,7 @@ const { songs } = Astro.props;
         const currentButton = event.currentTarget;
         const currentSongItem = currentButton.closest('.song-item');
         const currentButtonWrapper = currentButton.closest('.btn-wrapper');
-        const currentVinyl = currentSongItem.querySelector('.vinyl-record');
+        const currentVinyl = currentSongItem.querySelector('.lp');
 
         currentButtonWrapper.classList.toggle('is-active');
         currentSongItem.classList.toggle('is-active');
@@ -66,7 +66,8 @@ const { songs } = Astro.props;
         const currentButton = event.currentTarget;
         const currentSongItem = currentButton.closest('.song-item');
         const currentButtonWrapper = currentButton.closest('.btn-wrapper');
-        const currentVinyl = currentSongItem.querySelector('.vinyl-record');
+        const currentVinyl = currentSongItem.querySelector('.lp');
+        const header = document.querySelector('h1');
         const iframeContainer = document.getElementById('song-iframe-wrapper');
 
         // Haal de URI op van het aangeklikte liedje
@@ -91,12 +92,13 @@ const { songs } = Astro.props;
         currentButtonWrapper.classList.toggle('is-active');
         currentSongItem.classList.toggle('is-active');
         currentVinyl.classList.toggle('is-active');
+        header.classList.remove('empty-player');
     }
 
     function setSongInactive(songItem) {
         const songItemPlayButton = songItem.querySelector('.play-button');
         const playButtonWrapper = songItemPlayButton.closest('.btn-wrapper');
-        const vinyl = songItem.querySelector('.vinyl-record');
+        const vinyl = songItem.querySelector('.lp');
         playButtonWrapper.classList.remove('is-active');
         songItem.classList.remove('is-active');
         vinyl.classList.remove('is-active');

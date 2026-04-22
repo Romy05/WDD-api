@@ -10,6 +10,21 @@ const albumCoverUrl = song.album.images[0].url || '';
 
 <div data-uri={song.uri} class="song-container">
 
+    <div class="lp">
+        <Button
+            buttonClassName="play-button"
+            background={{backgroundUrl: albumCoverUrl, backgroundTitle: 'Album cover'}}
+            text="Play"
+            hideText
+            icon="PlayPixel"
+            activeIcon="PausePixel"
+        />
+
+        <div class="vinyl-record-container">
+            <div class="vinyl-record"><img src={albumCoverUrl} /></div>
+        </div>
+    </div>
+
     <div class="song-description">
         <span class="song-name">{song.name}</span>
         <div class="artists">
@@ -27,26 +42,12 @@ const albumCoverUrl = song.album.images[0].url || '';
                 })
             }
         </div>
-    </div>
-
-    <Button
-        buttonClassName="play-button"
-        background={{backgroundUrl: albumCoverUrl, backgroundTitle: 'Album cover'}}
-        text="Play"
-        hideText
-        icon="PlayPixel"
-        activeIcon="PausePixel"
-    />
-
-    <div class="vinyl-record-container">
-        <div class="vinyl-record"><img src={albumCoverUrl} /></div>
-    </div>
-
-    <div class="buttons">
-        {   isInsidePlaylist
-            ? <Button text="Remove" />
-            : <Button text="Add" />
-        }
+        <div class="buttons">
+            {   isInsidePlaylist
+                ? <Button text="Remove" />
+                : <Button text="Add" />
+            }
+        </div>
     </div>
 
 </div>

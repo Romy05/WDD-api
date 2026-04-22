@@ -1,9 +1,35 @@
 .song-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-
     gap: 1rem;
-    width: 100%;
+}
+
+.lp {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    .vinyl-record-container {
+        transform: translateX(-40%);
+        transition: linear 1s;
+        z-index: -1;
+    }
+
+    .btn-wrapper {
+        transform: translateX(40%);
+        transition: linear 1s;
+    }
+
+    &:has(.is-active) {
+        * {
+            transform: translateX(0);
+        }
+
+        .vinyl-record {
+            animation-play-state: running;
+        }
+    }
 }
 
 .album-cover {
@@ -33,25 +59,17 @@
 .artists {
     font-size: .9em;
 }
-.vinyl-record-container {
-    transform: translateX(-90%);
-    transition: linear 1s;
-    z-index: -1;
 
-    &:has(.is-active) {
-        transform: translateX(0);
-    }
-
-}
 
 .vinyl-record {
     display: flex;
     z-index: -1;
-    --size: 6rem;
+    --size: 50vh;
     height: var(--size);
     aspect-ratio: 1/1;
     align-items: center;
     justify-content: center;
+    animation: --rotate linear 5s infinite paused;
 
     background-image: radial-gradient(
         var(--color-background) 0 7.5%,
@@ -83,10 +101,6 @@
         width: 30%;
         aspect-ratio: 1;
         mask-image: radial-gradient(transparent 0 15%, red 0 60%, transparent 0 100%);
-    }
-
-    &.is-active {
-        animation: --rotate linear 5s infinite;
     }
 }
 

@@ -1,48 +1,102 @@
 .song-list {
-    counter-reset: song-counter;
     list-style-type: none;
     padding: 0;
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+    border: 2px solid var(--color-dark);
+    border-radius: .5rem;
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    anchor-name: --lp-carousel;
+    scroll-snap-type: x mandatory;
+    scroll-marker-group: after;
+    width: 100%;
+
+    &::scroll-marker-group {
+        margin-block: .5em;
+        display: flex;
+        justify-content: center;
+        gap: .5em;
+    }
+
+
+    &::scroll-button(right),
+    &::scroll-button(left) {
+        margin-block: 1rem;
+        content: "→" / "Scroll Right";
+        cursor: pointer;
+        border-radius: 50%;
+        border: 3px solid white;
+        color: white;
+        background-color: #B66879;
+        font-size: 2rem;
+        padding-bottom: .5rem;
+        position: fixed;
+        position-anchor: --lp-carousel;
+        position-area: right center;
+        translate: -25%;
+    }
+
+    &::scroll-button(left) {
+        content: "←" / "Scroll Left";
+        position-area: left center;
+        translate: 25%;
+    }
+
+    &::scroll-button(right):disabled,
+    &::scroll-button(left):disabled {
+        cursor: not-allowed;
+        background-color: #93B7BE;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 0 0 calc(100% / 2);
+        display: block;
+    }
 
     li {
         display: flex;
         padding-inline: 1rem;
         gap: 1rem;
         align-items: center;
-        border: 2px solid black;
-        counter-increment: song-counter;
+        border: 2px solid var(--color-dark);
+        width: 100%;
+        scroll-snap-align: center;
+
+        .lp {
+            animation: --animate-lp 3s alternate linear infinite paused;
+        }
 
         &.is-active {
-            &::before {
-                color: var(--color-pink);
+            .lp {
                 animation-play-state: running;
             }
         }
     }
 
-    li::before {
-        text-align: center;
-        content: counter(song-counter)".";
-        text-decoration: underline;
-        min-width: 4rem;
-        max-width: 4rem;
+    li::scroll-marker {
+        display: inline-block;
+        content: '';
+        height: 1em;
+        width: 1em;
+        background-color: #93B7BE;
+        border-radius: 50%;
+    }
 
-        font-family: 'Furnitur', sans-serif;
-        font-size: clamp(2rem, 5vw, 4rem);
-        font-variation-settings: 'VRTC' 61;
-        animation: --animateNumber 1s alternate linear infinite paused;
+    li::scroll-marker:target-current {
+        background-color: #454545;
     }
 }
+ul::-webkit-scrollbar {
+    display: none;
+}
 
-@keyframes --animateNumber {
+@keyframes --animate-lp {
     0% {
-        transform: translateY(5px);
-        font-variation-settings: 'VRTC' 50, 'HRZN' 10;
+        transform: translateY(5px) translateX(-5px);
     }
     100% {
-        transform: none;
-        font-variation-settings: 'VRTC' 90, 'HRZN' 50;
+        transform: translateY(-5px) translateX(5px)
     }
 }
