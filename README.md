@@ -31,6 +31,9 @@ Volgende week wil ik gaan kijken naar:
 - Een 'add playlist to spotify button' toevoegen zodat ik niet meerdere calls iedere keer naar de spotify api doe, maar 1 call doe.
 - Inspiratie opzoeken en kijken naar andere web players.
 
+## Checkout 22-4-2026
+Vandaag heb ik 
+
 # Stijl inspiratie
 View transitions als nummer naar playlist gaat,
 Document pip voor playlist weergave

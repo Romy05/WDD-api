@@ -3,7 +3,7 @@ import './header.css';
 import { fetchSongs } from '../../api/spotifyApi.js';
 const currentPath = Astro.url.pathname;
 
-const songs = await fetchSongs();
+//const songs = await fetchSongs();
 ---
 
 <header>
@@ -12,13 +12,13 @@ const songs = await fetchSongs();
         <ul>
             <li>
                 <a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
-                {
-                    songs.map(song => {
-                       return (
-                           <a href=`/song/${song.id}` class={currentPath === `/song/${song.id}` ? 'active' : ''}>{song.name}</a>
-                       )
-                    })
-                }
+                <!--{-->
+                <!--    songs.map(song => {-->
+                <!--       return (-->
+                <!--           <a href=`/song/${song.id}` class={currentPath === `/song/${song.id}` ? 'active' : ''}>{song.name}</a>-->
+                <!--       )-->
+                <!--    })-->
+                <!--}-->
             </li>
         </ul>
     </nav>

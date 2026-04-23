@@ -2,7 +2,7 @@ import songs from '../data/dummySongs.json';
 
 let cachedToken = null;
 let tokenExpiry = 0;
-export let currentSongs = undefined;
+export let currentSongs = songs;
 
 async function fetchSpotifyAuthToken() {
     const client_id = import.meta.env.API_KEY_SPOTIFY_CLIENT_ID;
@@ -87,15 +87,14 @@ export async function fetchSpotifyTrackByArtist(artistName, limit = 10) {
     }
 }
 
-export async function fetchSongs() {
-    if (currentSongs) return currentSongs;
+export async function fetchSongs(genre = 'pop', newSongs = false) {
+    if (currentSongs && !newSongs) return currentSongs;
 
-    const artistSearch = await fetchSpotifyArtistsByGenre('pop', 20, 10);
+    const artistSearch = await fetchSpotifyArtistsByGenre(genre, 20, 10);
 
     const artists = artistSearch.artists.items;
-    
+
     const songObjects = await Promise.all(artists.map(async (artist) => {
-        if(!artist) return;
         return await fetchSpotifyTrackByArtist(artist.name);
     }));
     currentSongs = songObjects.map((songObject, index) => {
@@ -104,8 +103,6 @@ export async function fetchSongs() {
             index
         }
     })
-
-    console.log(currentSongs);
 
     return currentSongs;
 }

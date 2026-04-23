@@ -1,6 +1,6 @@
 ---
 import { fetchSongs, fetchSpotifyArtistsByGenre, fetchSpotifyTrackByArtist } from '../../api';
-import Song from '../../components/Song/Song.astro';
+import SongInfo from '../../components/SongInfo/SongInfo.astro';
 import Link from '../../components/Link/Link.astro'
 import MainLayout from '../../layouts/MainLayout.astro'
 
@@ -29,7 +29,7 @@ const nextId = allSongs[song.index + 1] ? allSongs[song.index + 1].id : allSongs
 <MainLayout backgroundImage={song.album.images[0].url} title={song.name}>
     <div class="detail-page">
         <Link onClick={() => {reverseDirection()}} isButtonLike url={`/song/${previousId}`}>Previous</Link>
-        <Song song={song} />
+        <SongInfo song={song} />
         <Link isButtonLike url={`/song/${nextId}`}>Next</Link>
     </div>
 

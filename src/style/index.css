@@ -38,14 +38,13 @@ body {
 
     h1 {
         text-align: end;
-        transition: transform 1s ease;
+        transform: translateX(-.5em);
+
          span {
              animation: --float 5s linear infinite alternate;
          }
 
         &.empty-player {
-            transform: translateY(3em) translateX(-.5em);
-
             span {
                 animation: none;
             }
