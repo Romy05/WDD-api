@@ -4,7 +4,6 @@ import Song from '../../components/Song/Song.astro';
 import Link from '../../components/Link/Link.astro'
 import MainLayout from '../../layouts/MainLayout.astro'
 
-import '../../style/index.css';
 import './songDetail.css'
 export async function getStaticPaths() {
     const songs = await fetchSongs();

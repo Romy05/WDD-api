@@ -16,13 +16,14 @@ const { title, backgroundImage } = Astro.props;
 <body >
 <Header />
 
-<main>
-    <h1 class="large-heading empty-player">{ title.split("").map(letter => {
-        // spatie code van claude
+<h1 class="large-heading empty-player">{ title.split("").map(letter => {
+    // spatie code van claude
     return (
-                <span>{ letter === " " ? "\u00A0" : letter }</span>
-        )
-    }) }</h1>
+            <span>{ letter === " " ? "\u00A0" : letter }</span>
+    )
+}) }</h1>
+
+<main>
     <SongPreview />
     <slot />
 </main>

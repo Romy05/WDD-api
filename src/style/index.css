@@ -39,11 +39,16 @@ body {
     h1 {
         text-align: end;
         transition: transform 1s ease;
-        animation: --float 5s linear infinite alternate;
+         span {
+             animation: --float 5s linear infinite alternate;
+         }
 
         &.empty-player {
             transform: translateY(3em) translateX(-.5em);
-            animation: none;
+
+            span {
+                animation: none;
+            }
         }
     }
 }
