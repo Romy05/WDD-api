@@ -1,8 +1,8 @@
-import songs from '../data/dummySongs.json';
+
 
 let cachedToken = null;
 let tokenExpiry = 0;
-export let songs = songs;
+export let songs = undefined;
 
 async function fetchSpotifyAuthToken() {
     const client_id = import.meta.env.API_KEY_SPOTIFY_CLIENT_ID;
