@@ -91,10 +91,11 @@ export async function fetchSongs() {
     if (currentSongs) return currentSongs;
 
     const artistSearch = await fetchSpotifyArtistsByGenre('pop', 20, 10);
-    
-    const artists = artistSearch.artists.items;
 
+    const artists = artistSearch.artists.items;
+    
     const songObjects = await Promise.all(artists.map(async (artist) => {
+        if(!artist) return;
         return await fetchSpotifyTrackByArtist(artist.name);
     }));
     currentSongs = songObjects.map((songObject, index) => {
