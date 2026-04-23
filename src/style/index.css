@@ -27,7 +27,7 @@
 body {
     margin-inline: 10%;
     background-color: var(--color-background);
-
+    padding-block-end: 10rem;
     p, h1, span, li {
         color: var(--color-text);
     }

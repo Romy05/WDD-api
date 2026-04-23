@@ -25,9 +25,9 @@ const nextId = allSongs[song.index + 1] ? allSongs[song.index + 1].id : allSongs
 
 <MainLayout backgroundImage={song.album.images[0].url} title={song.name}>
     <div class="detail-page">
-        <Link url={`/song/${previousId}`}>Previous</Link>
+        <Link isButtonLike url={`/song/${previousId}`}>Previous</Link>
         <Song song={song} />
-        <Link url={`/song/${nextId}`}>Next</Link>
+        <Link isButtonLike url={`/song/${nextId}`}>Next</Link>
     </div>
 
 </MainLayout>

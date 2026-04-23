@@ -1,5 +1,30 @@
+.link-wrapper {
+    --link-color: #044504;
+    --link-height: 2rem;
+    display: flex;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        aspect-ratio: 1/2;
+        height: var(--link-height);
+        background-color: var(--link-color);
+        mask-image: url(../../assets/svgs/circle-pixel.svg);
+        mask-size: 100% 100%;
+    }
+
+    &::after {
+        transform: scaleX(-1);
+    }
+}
 
 .link {
-    --link-color: #044504;
     color: var(--link-color);
+    height: var(--link-height);
+    padding-block: .5em;
+    &.button {
+        color: white;
+        background-color: var(--link-color);
+    }
 }
