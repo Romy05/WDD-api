@@ -12,61 +12,21 @@ import PlayList from '../components/Playlist/Playlist.astro';
 
 import '../style/index.css';
 
-// const artistSearch = await fetchSpotifyArtistsByGenre('pop', 20, 10);
-// const artists = artistSearch.artists.items;
-//
-// const songs = await Promise.all(artists.map(async (artist) => {
-// 	return await fetchSpotifyTrackByArtist(artist.name);
-// }));
-//
-// console.log(songs);
-
-import songs from '../data/dummySongs.json';
 ---
 
 
 <MainLayout title="Find your songs!">
-		<SongPreview />
 
-		<SongList songs={songs} />
 
-		<PlayList songs={songs} />
+		<!--<SongList songs={songs} />-->
+
+		<!--<PlayList songs={songs} />-->
 
 		<PlayListPreview />
 </MainLayout>
 
-<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 <script is:inline>
 	let pipWindow;
-
-	// Gebruik van dispatch event met behulp van AI https://claude.ai/share/e9a554ec-32c7-49c9-98f6-5cae9f4c2a1d
-
-	window.onSpotifyIframeApiReady = (IFrameAPI) => {
-		const songElement = document.getElementById('embed-iframe-song');
-		const playListElement = document.getElementById('embed-iframe-playlist');
-		const songOptions = {
-			width: '100%',
-			height: '80px',
-			uri: null
-		};
-		const playListOptions = {
-			uri: 'spotify:playlist:0hTYBFqMRQh6mRGomeRYt9?si=115404279e13435d'
-		};
-		const songCallback = (controller) => {
-			window.dispatchEvent(new CustomEvent('song-controller-ready', {
-				detail: { controller }
-			}));
-		};
-		const playListCallback = (controller) => {
-			window.dispatchEvent(new CustomEvent('playlist-controller-ready',{
-				detail: { controller }
-			}));
-		};
-		IFrameAPI.createController(songElement, songOptions, songCallback);
-		IFrameAPI.createController(playListElement, playListOptions, playListCallback);
-	};
-
-
 
 	async function togglePiPWindow() {
 

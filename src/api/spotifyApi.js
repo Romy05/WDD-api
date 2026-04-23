@@ -1,5 +1,8 @@
+import songs from '../data/dummySongs.json';
+
 let cachedToken = null;
 let tokenExpiry = 0;
+export let songs = songs;
 
 async function fetchSpotifyAuthToken() {
     const client_id = import.meta.env.API_KEY_SPOTIFY_CLIENT_ID;
@@ -82,4 +85,25 @@ export async function fetchSpotifyTrackByArtist(artistName, limit = 10) {
     } catch (error) {
         console.log('Something went wrong while trying to fetch data', error);
     }
+}
+
+export async function fetchSongs() {
+    if (songs) return songs;
+
+    const artistSearch = await fetchSpotifyArtistsByGenre('pop', 20, 10);
+    const artists = artistSearch.artists.items;
+
+    const songObjects = await Promise.all(artists.map(async (artist) => {
+        return await fetchSpotifyTrackByArtist(artist.name);
+    }));
+    songs = songObjects.map((songObject, index) => {
+        return {
+            ...songObject,
+            index
+        }
+    })
+
+    console.log(songs);
+
+    return songs;
 }

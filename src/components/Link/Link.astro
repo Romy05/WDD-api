@@ -1,0 +1,11 @@
+---
+import './link.css'
+const {
+    url,
+    isButtonLike
+} = Astro.props;
+---
+
+<a href={url} class={`link ${isButtonLike ? 'button' : ''}`}>
+    <slot/>
+</a>

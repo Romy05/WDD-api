@@ -1,6 +1,6 @@
 .btn-wrapper {
     --text-color: var(--color-button-text);
-    --background-color: var(--color-pink);
+    --background-color: var(--color-red);
     --shadow-color: var(--color-black);
     --button-height: 2rem;
 

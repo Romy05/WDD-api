@@ -1,18 +1,19 @@
 ---
 import Header from '../components/Header/Header.astro';
+import SongPreview from '../components/SongPreview/SongPreview.astro';
 import './mainLayout.css';
 
-const { title } = Astro.props;
+const { title, backgroundImage } = Astro.props;
 
 ---
-<html lang="en">
+<html lang="en" style=`--background-image : url('${backgroundImage}');`>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/styles/global.css" >
     <title>Songerator</title>
 </head>
-<body>
+<body >
 <Header />
 
 <h1 class="large-heading empty-player">{ title.split("").map(letter => {
@@ -22,7 +23,40 @@ const { title } = Astro.props;
     )
 }) }</h1>
 <main>
+    <SongPreview />
     <slot />
 </main>
 </body>
 </html>
+
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+<script is:inline>
+
+    // Gebruik van custom dispatch event met behulp van AI https://claude.ai/share/e9a554ec-32c7-49c9-98f6-5cae9f4c2a1d
+
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        const songElement = document.getElementById('embed-iframe-song');
+        const playListElement = document.getElementById('embed-iframe-playlist');
+
+        const songOptions = {
+            width: '100%',
+            height: '80px',
+            uri: null
+        };
+        const playListOptions = {
+            uri: 'spotify:playlist:0hTYBFqMRQh6mRGomeRYt9?si=115404279e13435d'
+        };
+        const songCallback = (controller) => {
+            window.dispatchEvent(new CustomEvent('song-controller-ready', {
+                detail: { controller }
+            }));
+        };
+        const playListCallback = (controller) => {
+            window.dispatchEvent(new CustomEvent('playlist-controller-ready',{
+                detail: { controller }
+            }));
+        };
+        IFrameAPI.createController(songElement, songOptions, songCallback);
+        IFrameAPI.createController(playListElement, playListOptions, playListCallback);
+    };
+</script>

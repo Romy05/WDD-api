@@ -1,0 +1,120 @@
+---
+import { fetchSongs, fetchSpotifyArtistsByGenre, fetchSpotifyTrackByArtist } from '../../api';
+import Song from '../../components/Song/Song.astro';
+import Link from '../../components/Link/Link.astro'
+import MainLayout from '../../layouts/MainLayout.astro'
+
+import '../../style/index.css';
+import './songDetail.css'
+export async function getStaticPaths() {
+    const songs = await fetchSongs();
+
+    return songs.map(song => {
+        return {
+            params: { id: song.id },
+            props: { song }
+        }
+    })
+}
+const { song } = Astro.props as any;
+const allSongs = await fetchSongs();
+
+const previousId = allSongs[song.index - 1] ? allSongs[song.index - 1].id : allSongs[allSongs.length - 1].id;
+const nextId = allSongs[song.index + 1] ? allSongs[song.index + 1].id : allSongs[0].id;
+---
+
+<MainLayout backgroundImage={song.album.images[0].url} title={song.name}>
+    <div class="detail-page">
+        <Link url={`/song/${previousId}`}>Previous</Link>
+        <Song song={song} />
+        <Link url={`/song/${nextId}`}>Next</Link>
+    </div>
+
+</MainLayout>
+
+<script is:inline>
+    let embedController = null;
+
+    window.addEventListener('song-controller-ready', (e) => {
+        console.log('controller', e.detail.controller);
+        embedController = e.detail.controller;
+    });
+
+    const playButtons = document.querySelectorAll('.play-button');
+    if (playButtons) {
+        const songItems = []
+        playButtons.forEach((button, index) => {
+            const songItem = button.closest('.song-container');
+            songItems.push(songItem);
+            button.addEventListener('click', async (event) => {
+                if (button.closest('.song-container').classList.contains('is-active')) {
+                    pauseActiveSong(event);
+                    return;
+                }
+                await setActiveSong(event, index, songItems);
+            });
+        })
+    }
+
+    // iframe switcht van liedje met behulp van AI
+    // https://claude.ai/share/8eedb4a4-9670-44f5-a079-bd85e8e2c486
+
+    function pauseActiveSong(event) {
+        if (embedController) {
+            embedController.pause();
+        }
+
+        const currentButton = event.currentTarget;
+        const currentSongItem = currentButton.closest('.song-container');
+        const currentButtonWrapper = currentButton.closest('.btn-wrapper');
+        const currentVinyl = currentSongItem.querySelector('.lp');
+
+        currentButtonWrapper.classList.toggle('is-active');
+        currentSongItem.classList.toggle('is-active');
+        currentVinyl.classList.toggle('is-active');
+    }
+
+    async function setActiveSong(event, currentIndex,songItems) {
+        const currentButton = event.currentTarget;
+        const currentSongItem = currentButton.closest('.song-container');
+        const currentButtonWrapper = currentButton.closest('.btn-wrapper');
+        const currentVinyl = currentSongItem.querySelector('.lp');
+        const header = document.querySelector('h1');
+        const iframeContainer = document.getElementById('song-iframe-wrapper');
+
+        // Haal de URI op van het aangeklikte liedje
+        const uri = currentSongItem.getAttribute('data-uri');
+        currentUri = uri;
+
+        songItems.forEach((songItem, index) => {
+            if ((index === currentIndex) || !songItem.classList.contains('is-active') ) {
+                return;
+            }
+
+            setSongInactive(songItem);
+        });
+
+        if (embedController) {
+            // Controller bestaat al → wissel gewoon van liedje
+            embedController.loadUri(uri);
+            iframeContainer.classList.add('active-song');
+            embedController.play();
+        }
+
+        currentButtonWrapper.classList.toggle('is-active');
+        currentSongItem.classList.toggle('is-active');
+        currentVinyl.classList.toggle('is-active');
+        header.classList.remove('empty-player');
+    }
+
+    function setSongInactive(songItem) {
+        const songItemPlayButton = songItem.querySelector('.play-button');
+        const playButtonWrapper = songItemPlayButton.closest('.btn-wrapper');
+        const vinyl = songItem.querySelector('.lp');
+        playButtonWrapper.classList.remove('is-active');
+        songItem.classList.remove('is-active');
+        vinyl.classList.remove('is-active');
+    }
+
+</script>
+

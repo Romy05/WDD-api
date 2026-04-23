@@ -1,0 +1,13 @@
+html {
+    --background-image : url('https://picsum.photos/seed/2/1000/1000');
+
+    background-image: var(--background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.detail-page {
+    display: flex;
+    justify-content: space-around;
+}

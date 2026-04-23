@@ -4,8 +4,8 @@
     --color-black: #000;
     --color-white: #fff;
     --color-dark: #101c45;
-    --color-pink: #e64ccf;
-    --color-light: #fbc5f6;
+    --color-red: #ea1c38;
+    --color-light: #dd8f04;
     --font-primary: 'Roboto', sans-serif;
 
     /* spacing */
@@ -35,9 +35,20 @@ body {
     h1 {
         text-align: end;
         transition: 1s ease;
+        animation: --float 5s linear infinite alternate;
 
         &.empty-player {
             transform: translateY(3em) translateX(-.5em);
+            animation: none;
         }
+    }
+}
+
+@keyframes --float {
+    0% {
+        transform: translateY(10px) translateX(5px);
+    }
+    100% {
+        transform: none;
     }
 }

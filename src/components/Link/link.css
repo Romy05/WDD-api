@@ -1,0 +1,5 @@
+
+.link {
+    --link-color: #044504;
+    color: var(--link-color);
+}

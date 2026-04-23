@@ -13,12 +13,12 @@
     .vinyl-record-container {
         transform: translateX(-40%);
         transition: linear 1s;
-        z-index: -1;
     }
 
     .btn-wrapper {
         transform: translateX(40%);
         transition: linear 1s;
+        z-index: 10;
     }
 
     &:has(.is-active) {
@@ -63,7 +63,6 @@
 
 .vinyl-record {
     display: flex;
-    z-index: -1;
     --size: 50vh;
     height: var(--size);
     aspect-ratio: 1/1;

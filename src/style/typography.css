@@ -32,7 +32,7 @@
         animation-delay: calc(sibling-index() * -1s);
         transition: ease-out .5s;
         &:hover {
-            color: var(--color-pink);
+            color: var(--color-red);
         }
     }
 }
@@ -45,7 +45,7 @@
         transition: ease-out .5s;
         &:hover {
             transform: translateY(-5px);
-            color: var(--color-pink);
+            color: var(--color-red);
         }
     }
 }
