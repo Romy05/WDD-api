@@ -26,5 +26,6 @@
     &.button {
         color: white;
         background-color: var(--link-color);
+        text-decoration: none;
     }
 }

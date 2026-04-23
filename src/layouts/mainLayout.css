@@ -1,6 +1,33 @@
+@keyframes --slide-out {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes --slide-in {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+::view-transition-old(main-content) {
+    animation: .5s ease both --slide-out
+}
+
+::view-transition-new(main-content) {
+    animation: .5s ease both --slide-in
+}
+
 main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding-block: 1rem;
+
+    view-transition-name: main-content;
 }

@@ -12,12 +12,12 @@
 
     .vinyl-record-container {
         transform: translateX(-40%);
-        transition: linear 1s;
+        transition: transform linear 1s;
     }
 
     .btn-wrapper {
         transform: translateX(40%);
-        transition: linear 1s;
+        transition: transform linear 1s;
         z-index: 10;
     }
 

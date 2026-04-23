@@ -19,13 +19,17 @@ export async function getStaticPaths() {
 const { song } = Astro.props as any;
 const allSongs = await fetchSongs();
 
+function reverseDirection() {
+    console.log('reverse');
+}
+
 const previousId = allSongs[song.index - 1] ? allSongs[song.index - 1].id : allSongs[allSongs.length - 1].id;
 const nextId = allSongs[song.index + 1] ? allSongs[song.index + 1].id : allSongs[0].id;
 ---
 
 <MainLayout backgroundImage={song.album.images[0].url} title={song.name}>
     <div class="detail-page">
-        <Link isButtonLike url={`/song/${previousId}`}>Previous</Link>
+        <Link onClick={() => {reverseDirection()}} isButtonLike url={`/song/${previousId}`}>Previous</Link>
         <Song song={song} />
         <Link isButtonLike url={`/song/${nextId}`}>Next</Link>
     </div>
@@ -115,6 +119,5 @@ const nextId = allSongs[song.index + 1] ? allSongs[song.index + 1].id : allSongs
         songItem.classList.remove('is-active');
         vinyl.classList.remove('is-active');
     }
-
 </script>
 

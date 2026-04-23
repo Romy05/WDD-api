@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header/Header.astro';
 import SongPreview from '../components/SongPreview/SongPreview.astro';
+import '../style/index.css';
 import './mainLayout.css';
 
 const { title, backgroundImage } = Astro.props;
@@ -10,19 +11,18 @@ const { title, backgroundImage } = Astro.props;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/styles/global.css" >
     <title>Songerator</title>
 </head>
 <body >
 <Header />
 
-<h1 class="large-heading empty-player">{ title.split("").map(letter => {
-    // spatie code van claude
-    return (
-        <span>{ letter === " " ? "\u00A0" : letter }</span>
-    )
-}) }</h1>
 <main>
+    <h1 class="large-heading empty-player">{ title.split("").map(letter => {
+        // spatie code van claude
+    return (
+                <span>{ letter === " " ? "\u00A0" : letter }</span>
+        )
+    }) }</h1>
     <SongPreview />
     <slot />
 </main>

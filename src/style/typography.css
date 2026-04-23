@@ -30,7 +30,7 @@
 
     span {
         animation-delay: calc(sibling-index() * -1s);
-        transition: ease-out .5s;
+        transition: transform ease-out .5s;
         &:hover {
             color: var(--color-red);
         }
@@ -42,7 +42,7 @@
         display: inline-block;
         font-family: 'Jersey', sans-serif;
         font-size: clamp(2rem, 5vw, 4rem);
-        transition: ease-out .5s;
+        transition: transform ease-out .5s;
         &:hover {
             transform: translateY(-5px);
             color: var(--color-red);

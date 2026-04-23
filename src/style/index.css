@@ -1,5 +1,9 @@
 @import 'typography.css';
 
+@view-transition {
+    navigation: auto;
+}
+
 :root {
     --color-black: #000;
     --color-white: #fff;
@@ -34,7 +38,7 @@ body {
 
     h1 {
         text-align: end;
-        transition: 1s ease;
+        transition: transform 1s ease;
         animation: --float 5s linear infinite alternate;
 
         &.empty-player {

@@ -11,4 +11,6 @@ html {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    view-transition-name: song-detail;
 }
