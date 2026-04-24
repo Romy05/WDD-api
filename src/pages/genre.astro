@@ -1,0 +1,18 @@
+---
+export const prerender = false;
+
+import SongList from '../components/SongList/SongList.astro'
+import MainLayout from '../layouts/MainLayout.astro';
+
+const genre = Astro.url.searchParams.get("genre");
+console.log('genreeee ', genre)
+const songs = await fetchSongs(genre);
+console.log(songs);
+import '../style/index.css';
+import { fetchSongs } from "../api";
+---
+
+
+<MainLayout title="Suggestions">
+    <SongList genre={genre} songs={songs} />
+</MainLayout>

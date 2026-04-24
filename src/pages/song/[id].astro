@@ -1,36 +1,28 @@
 ---
-import { fetchSongs, fetchSpotifyArtistsByGenre, fetchSpotifyTrackByArtist } from '../../api';
+export const prerender = false;
+
+import { fetchSpotifyTrackById } from '../../api';
 import SongInfo from '../../components/SongInfo/SongInfo.astro';
 import Link from '../../components/Link/Link.astro'
 import MainLayout from '../../layouts/MainLayout.astro'
 
 import './songDetail.css'
-export async function getStaticPaths() {
-    const songs = await fetchSongs();
 
-    return songs.map(song => {
-        return {
-            params: { id: song.id },
-            props: { song }
-        }
-    })
-}
-const { song } = Astro.props as any;
-const allSongs = await fetchSongs();
+const { id } = Astro.params;
 
-function reverseDirection() {
-    console.log('reverse');
+const song = await fetchSpotifyTrackById(id);
+
+if (!song) {
+    return Astro.redirect('/');
 }
 
-const previousId = allSongs[song.index - 1] ? allSongs[song.index - 1].id : allSongs[allSongs.length - 1].id;
-const nextId = allSongs[song.index + 1] ? allSongs[song.index + 1].id : allSongs[0].id;
 ---
 
 <MainLayout backgroundImage={song.album.images[0].url} title={song.name}>
     <div class="detail-page">
-        <Link onClick={() => {reverseDirection()}} isButtonLike url={`/song/${previousId}`}>Previous</Link>
+        <Link linkId="previous-song-link" isButtonLike>Previous</Link>
         <SongInfo song={song} />
-        <Link isButtonLike url={`/song/${nextId}`}>Next</Link>
+        <Link linkId="next-song-link" isButtonLike>Next</Link>
     </div>
 
 </MainLayout>

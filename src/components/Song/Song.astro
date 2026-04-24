@@ -1,0 +1,17 @@
+---
+const { song } = Astro.props;
+---
+
+<li class="song-item">
+    <div class="song">
+        <img class="album-cover" src=`${song.album.images[0].url}` alt=`${song.name}` />
+        <div class="song-info">
+            <p class="song-title">{song.name}</p>
+            <p class="song-artist">{song.artists[0].name}</p>
+        </div>
+    </div>
+    <div class="link-wrapper">
+        <a href=`/song/${song.id}`>Meer info</a>
+    </div>
+
+</li>

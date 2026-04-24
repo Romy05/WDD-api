@@ -2,11 +2,12 @@
 import './link.css'
 const {
     url,
-    isButtonLike
+    isButtonLike,
+    linkId
 } = Astro.props;
 ---
 <div class="link-wrapper">
-    <a href={url} class={`link ${isButtonLike ? 'button' : ''}`}>
+    <a id={linkId} href={url} class={`link ${isButtonLike ? 'button' : ''}`}>
         <slot/>
     </a>
 </div>

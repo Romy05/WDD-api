@@ -2,7 +2,7 @@ import songs from '../data/dummySongs.json';
 
 let cachedToken = null;
 let tokenExpiry = 0;
-export let currentSongs = songs;
+export let currentSongs = undefined;//songs;
 
 async function fetchSpotifyAuthToken() {
     const client_id = import.meta.env.API_KEY_SPOTIFY_CLIENT_ID;
@@ -87,9 +87,30 @@ export async function fetchSpotifyTrackByArtist(artistName, limit = 10) {
     }
 }
 
-export async function fetchSongs(genre = 'pop', newSongs = false) {
-    if (currentSongs && !newSongs) return currentSongs;
+export async function fetchSpotifyTrackById(id) {
+    const authToken = await fetchSpotifyAuthToken();
 
+    const url = `https://api.spotify.com/v1/tracks/${id}`;
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+            },
+        });
+
+        if (!response.ok) {
+            console.log('Something went wrong while trying to fetch data', response);
+            return;
+        }
+        return await response.json();
+    } catch (error) {
+        console.log('Something went wrong while trying to fetch data', error);
+    }
+}
+
+export async function fetchSongs(genre = 'pop') {
     const artistSearch = await fetchSpotifyArtistsByGenre(genre, 20, 10);
 
     const artists = artistSearch.artists.items;

@@ -32,7 +32,22 @@ Volgende week wil ik gaan kijken naar:
 - Inspiratie opzoeken en kijken naar andere web players.
 
 ## Checkout 22-4-2026
-Vandaag heb ik 
+Vandaag heb ik een vinyl en animatie toegevoegd voor wanneer een lied begint af te spelen. Ook heb ik met Cyd besproken dat het handig is om meer inspiratie op te doen online.
+Dit ben ik gaan doen en ik heb andere kleuren toegepast en ik ben het design mooier gaan vinden.
+Verder heb ik mijn hele lay-out omgegooid.
+
+## Checkout 23-4-2026
+Vandaag ben ik begonnen aan mijn detailpagina's. Ook ben ik begonnen met het maken van view transitions voor het scrollen tussen liedjes.
+Ook heb ik met Cyd gepraat waarna zij mij het advies gaf om mijn website en flow uit te tekenen zodat het voor mij ook logisch is hoe ik mijn website wil maken.
+Ik wil nog ontzettend veel toevoegen; van styling naar functionaliteit. 
+
+## Weekafsluiting 24-4-2026 
+Vandaag heb ik de logica van het dynamisch routen weer geheel op de server gezet. Het was zo niet verstandig om dit op de client side te doen.
+Verder heb ik gesproken over de UI van mijn project met Cyd en Melvin. Ik wil namelijk nog een hoop toevoegen voordat ik tevreden ben. Ook mis ik nu nog allebei de web api's maar ik weet wel hoe ik deze wil implementeren.
+Ik wil een Document PiP voor een playlist en een localstorage om liedjes te saven.
+Met die localstorage kun je daarna gelijk een aantal liedjes toevoegen aan de playlist i.p.v. deze een voor een te sturen.
+
+Ook wil ik meer kijken naar de visual hierarchy van mijn website, omdat dit nog niet erg duidelijk is.
 
 # Stijl inspiratie
 View transitions als nummer naar playlist gaat,

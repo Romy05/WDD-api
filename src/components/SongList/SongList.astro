@@ -3,10 +3,19 @@ import Song from '../Song/Song.astro';
 
 import './songList.css';
 
+const { songs, genre } = Astro.props;
 ---
-<h2 class="medium-heading">Suggestions</h2>
+<h2 class="medium-heading">{genre}</h2>
 <ul class="song-list" data-active-song="">
-
+    {
+        songs ?
+        songs.map(song => {
+            return (
+                    <Song song={song} />
+            )
+        })
+            : ''
+    }
 </ul>
 
 
