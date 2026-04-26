@@ -1,18 +1,24 @@
 ---
 export const prerender = false;
 
+import { fetchSongs } from "../api";
 import SongList from '../components/SongList/SongList.astro'
 import MainLayout from '../layouts/MainLayout.astro';
 
-const genre = Astro.url.searchParams.get("genre");
-console.log('genreeee ', genre)
-const songs = await fetchSongs(genre);
-console.log(songs);
 import '../style/index.css';
-import { fetchSongs } from "../api";
+
+const genre = Astro.url.searchParams.get("genre");
+const songs = await fetchSongs(genre);
+
+
 ---
 
 
 <MainLayout title="Suggestions">
     <SongList genre={genre} songs={songs} />
 </MainLayout>
+
+<!--https://www.answeroverflow.com/m/1157809781357154355 voor de definevars-->
+<script define:vars={{ songs }}>
+    localStorage.setItem('generated-songs', JSON.stringify(songs));
+</script>
