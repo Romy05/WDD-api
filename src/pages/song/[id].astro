@@ -27,6 +27,20 @@ if (!song) {
 
 </MainLayout>
 
+<script define:vars={{ id }}>
+    const allSongs = JSON.parse(localStorage.getItem('generated-songs'));
+    const currentSongIndex = allSongs.findIndex(song => song.id === id);
+    const previousSong = allSongs[currentSongIndex - 1] ? allSongs[currentSongIndex - 1] : allSongs[allSongs.length - 1];
+    const nextSong = allSongs[currentSongIndex + 1] ? allSongs[currentSongIndex + 1] : allSongs[0];
+
+    if (previousSong) {
+        document.getElementById('previous-song-link').setAttribute('href', `/song/${previousSong.id}`)
+    }
+    if (nextSong) {
+        document.getElementById('next-song-link').setAttribute('href', `/song/${nextSong.id}`)
+    }
+</script>
+
 <script is:inline>
     let embedController = null;
 
