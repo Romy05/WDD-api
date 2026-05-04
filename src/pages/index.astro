@@ -9,6 +9,7 @@ import { genres } from '../data/spotifyGenres.json';
 import '../style/index.css';
 
 const userToken = Astro.cookies.get('spotify_token')?.value;
+
 if (Astro.url.searchParams && userToken) {
 	const name = Astro.url.searchParams.get('name');
 	const description = Astro.url.searchParams.get('description');
@@ -21,37 +22,42 @@ if (Astro.url.searchParams && userToken) {
 
 
 <MainLayout title="Find your songs!">
-	<a href="/auth/spotifyLogin"> Log in met spotify </a>
-		<form method="GET" action="/">
-			<label> Playlist Name
-				<input id="playlist-name" name='name' type="text">
-			</label>
-			<label> Playlist Description
-				<input id="playlist-description" name='description' type="text">
-			</label>
-			<label>
-				Playlist is public
-				<input id="playlist-public" name="public" type="checkbox">
-			</label>
-			<Button buttonClassName="generate-playlist-button" text="Create playlist" />
-		</form>
-		<form method="GET" action="/genre">
-			<label for="genre-select"> Select a genre </label>
-			<select id="genre-select" name="genre">
-				{
-					genres.map(genre => {
-						return (
-							<option value={genre}>
-								{genre}
-							</option>
-						)
-					})
-				}
-			</select>
-			<Button buttonClassName="generate-button" text="Generate Songs" />
-		</form>
+	{
+		!userToken && (
+			<a href="/auth/spotifyLogin"> Log in met spotify </a>
+		)
+	}
 
-		<PlayListPreview />
+	<form method="GET" action="/">
+		<label> Playlist Name
+			<input id="playlist-name" name='name' type="text">
+		</label>
+		<label> Playlist Description
+			<input id="playlist-description" name='description' type="text">
+		</label>
+		<label>
+			Playlist is public
+			<input id="playlist-public" name="public" type="checkbox">
+		</label>
+		<Button buttonClassName="generate-playlist-button" text="Create playlist" />
+	</form>
+	<form method="GET" action="/genre">
+		<label for="genre-select"> Select a genre </label>
+		<select id="genre-select" name="genre">
+			{
+				genres.map(genre => {
+					return (
+						<option value={genre}>
+							{genre}
+						</option>
+					)
+				})
+			}
+		</select>
+		<Button buttonClassName="generate-button" text="Generate Songs" />
+	</form>
+
+	<PlayListPreview />
 </MainLayout>
 
 <script>
