@@ -148,12 +148,12 @@ export async function createPlaylist(userToken, name = 'New Playlist', descripti
         });
 
         if (!response.ok) {
-            console.log('Something went wrong while trying to fetch data', response);
+            console.log('Something went wrong while trying to create playlist', response);
             return;
         }
         return await response.json();
     } catch (error) {
-        console.log('Something went wrong while trying to fetch data', error);
+        console.log('Something went wrong while trying to create playlist', error);
     }
 }
 

@@ -15,7 +15,6 @@ if (Astro.url.searchParams && userToken) {
 	const isPublic = Astro.url.searchParams.get('public') === 'on';
 
 	const playList = await createPlaylist(userToken, name, description, isPublic);
-	console.log(playList)
 }
 
 ---

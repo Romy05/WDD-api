@@ -7,8 +7,6 @@ export async function GET({ redirect }) {
     const redirect_uri = import.meta.env.REDIRECT_URL;
     const scope = 'playlist-modify-public playlist-modify-private';
 
-    console.log(redirect_uri);
-
     const params = new URLSearchParams({
         response_type: 'code',
         client_id,

@@ -7,8 +7,6 @@ export async function GET({ url, cookies, redirect }) {
     const client_secret = import.meta.env.API_KEY_SPOTIFY_CLIENT_SECRET;
     const redirect_uri = import.meta.env.REDIRECT_URL;
 
-    console.log(redirect_uri);
-
     const AuthHeader = btoa(client_id + ':' + client_secret);
 
     const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -25,6 +23,7 @@ export async function GET({ url, cookies, redirect }) {
     });
 
     const data = await response.json();
+    console.log(data);
 
     // Sla de token op in een cookie
     cookies.set('spotify_token', data.access_token, {
