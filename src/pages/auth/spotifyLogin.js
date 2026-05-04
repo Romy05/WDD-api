@@ -5,7 +5,7 @@
 export async function GET({ redirect }) {
     const base_url = import.meta.env.BASE_URL;
     const client_id = import.meta.env.API_KEY_SPOTIFY_CLIENT_ID;
-    const redirect_uri = 'https://wdd-api.onrender.com/auth/callback';
+    const redirect_uri = import.meta.env.REDIRECT_URL;
     const scope = 'playlist-modify-public playlist-modify-private';
 
     const params = new URLSearchParams({
