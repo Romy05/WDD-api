@@ -23,7 +23,7 @@ export async function GET({ url, cookies, redirect }) {
     });
 
     const data = await response.json();
-    console.log(data);
+    console.log('tokendata', data);
 
     // Sla de token op in een cookie
     cookies.set('spotify_token', data.access_token, {
