@@ -1,16 +1,41 @@
 ---
+import { createPlaylist } from "../api";
 import MainLayout from '../layouts/MainLayout.astro';
 import Button from '../components/Button/Button.astro';
-import SongList from '../components/SongList/SongList.astro';
 import PlayListPreview from '../components/PlayListPreview/PlayListPreview.astro';
 
 import { genres } from '../data/spotifyGenres.json';
 
 import '../style/index.css';
+
+const userToken = Astro.cookies.get('spotify_token')?.value;
+if (Astro.url.searchParams && userToken) {
+	const name = Astro.url.searchParams.get('name');
+	const description = Astro.url.searchParams.get('description');
+	const isPublic = Astro.url.searchParams.get('public') === 'on';
+
+	const playList = await createPlaylist(userToken, name, description, isPublic);
+	console.log(playList)
+}
+
 ---
 
 
 <MainLayout title="Find your songs!">
+	<a href="/auth/spotifyLogin"> Log in met spotify </a>
+		<form method="GET" action="/">
+			<label> Playlist Name
+				<input id="playlist-name" name='name' type="text">
+			</label>
+			<label> Playlist Description
+				<input id="playlist-description" name='description' type="text">
+			</label>
+			<label>
+				Playlist is public
+				<input id="playlist-public" name="public" type="checkbox">
+			</label>
+			<Button buttonClassName="generate-playlist-button" text="Create playlist" />
+		</form>
 		<form method="GET" action="/genre">
 			<label for="genre-select"> Select a genre </label>
 			<select id="genre-select" name="genre">
@@ -30,7 +55,10 @@ import '../style/index.css';
 		<PlayListPreview />
 </MainLayout>
 
-<script is:inline>
+<script>
+	// @ts-nocheck
+	import { createPlaylist } from '../api/spotifyApi.js'
+
 	let pipWindow;
 
 	async function togglePiPWindow() {

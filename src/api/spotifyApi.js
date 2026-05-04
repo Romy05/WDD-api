@@ -34,6 +34,8 @@ async function fetchSpotifyAuthToken() {
     }
 }
 
+
+
 export async function fetchSpotifyArtistsByGenre(genre, offset = 0, limit = 5) {
     const authToken = await fetchSpotifyAuthToken();
 
@@ -127,3 +129,31 @@ export async function fetchSongs(genre = 'pop') {
 
     return currentSongs;
 }
+
+export async function createPlaylist(userToken, name = 'New Playlist', description = '', isPublic = false) {
+    const playListOptions = {
+        name,
+        description,
+        public: isPublic
+    }
+    const url = 'https://api.spotify.com/v1/me/playlists';
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${userToken}`,
+            },
+            body: JSON.stringify(playListOptions),
+        });
+
+        if (!response.ok) {
+            console.log('Something went wrong while trying to fetch data', response);
+            return;
+        }
+        return await response.json();
+    } catch (error) {
+        console.log('Something went wrong while trying to fetch data', error);
+    }
+}
+
