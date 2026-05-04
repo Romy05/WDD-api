@@ -3,10 +3,11 @@
 // Via deze pagina redirect de website naar de inlog van Spotify.
 
 export async function GET({ redirect }) {
-    const base_url = import.meta.env.BASE_URL;
     const client_id = import.meta.env.API_KEY_SPOTIFY_CLIENT_ID;
     const redirect_uri = import.meta.env.REDIRECT_URL;
     const scope = 'playlist-modify-public playlist-modify-private';
+
+    console.log(redirect_uri);
 
     const params = new URLSearchParams({
         response_type: 'code',
