@@ -5,7 +5,7 @@ export async function GET({ url, cookies, redirect }) {
     const code = url.searchParams.get('code');
     const client_id = import.meta.env.API_KEY_SPOTIFY_CLIENT_ID;
     const client_secret = import.meta.env.API_KEY_SPOTIFY_CLIENT_SECRET;
-    const redirect_uri = `https://wdd-api.onrender.com//auth/callback`;
+    const redirect_uri = 'https://wdd-api.onrender.com/auth/callback';
 
     const AuthHeader = btoa(client_id + ':' + client_secret);
 
