@@ -66,8 +66,7 @@ if (Astro.url.searchParams.get('name') && userToken) {
 
 </MainLayout>
 
-<script>
-
+<script is:inline>
 	document.querySelector('.pick-playlist').addEventListener('click', () => {
 		document.getElementById('playlist-picker').showModal();
 	});
