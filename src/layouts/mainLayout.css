@@ -32,3 +32,18 @@ main {
 
     view-transition-name: main-content;
 }
+
+dialog[open] {
+    margin: auto;
+    border: .2rem solid black;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 18rem;
+}
+
+#playlist-picker::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}

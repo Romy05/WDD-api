@@ -3,9 +3,10 @@ import Header from '../components/Header/Header.astro';
 import SongPreview from '../components/SongPreview/SongPreview.astro';
 import '../style/index.css';
 import './mainLayout.css';
+import Button from "../components/Button/Button.astro";
 
 const { title, backgroundImage } = Astro.props;
-
+const playListId = Astro.cookies.get('current_playlist_id')?.value;
 ---
 <html lang="en" style=`--background-image : url('${backgroundImage}');`>
 <head>
@@ -15,7 +16,39 @@ const { title, backgroundImage } = Astro.props;
 </head>
 <body >
 <Header />
+<dialog id="playlist-picker">
+    <Button isSecondary buttonClassName="choose-existing" text="Choose an existing playlist" />
+    <Button isSecondary buttonClassName="toggle-create-playlist" text="Create new playlist" />
+    <dialog id="playlist-create">
+        <form method="GET" action="/">
+            <label> Playlist Name
+                <input required id="playlist-name" name='name' type="text">
+            </label>
+            <label> Playlist Description
+                <input id="playlist-description" name='description' type="text">
+            </label>
+            <label>
+                Playlist is public
+                <input id="playlist-public" name="public" type="checkbox">
+            </label>
+            <div>
+                <Button buttonClassName="cancel-generate-playlist" text="Cancel"/>
+                <Button type="submit" buttonClassName="generate-playlist-button" text="Create playlist" />
+            </div>
+        </form>
+    </dialog>
+    <dialog id="choose-existing">
 
+    </dialog>
+    <Button buttonClassName="cancel-change-playlist" text="Cancel"/>
+</dialog>
+{ playListId && (
+        <div>
+            <Button buttonClassName="toggle-pip" text="View playlist" />
+            <Button buttonClassName="change-playlist" text="Change playlist" />
+        </div>
+
+)}
 <h1 class="large-heading empty-player">{ title.split("").map(letter => {
     // spatie code van claude
     return (
@@ -31,10 +64,29 @@ const { title, backgroundImage } = Astro.props;
 </html>
 
 <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
-<script is:inline>
+<script is:inline define:vars={{ playListId }}>
+    let pipWindow;
+
+    document.querySelector('.change-playlist').addEventListener('click', () => {
+        document.getElementById('playlist-picker').showModal();
+    });
+
+    document.querySelector('.cancel-change-playlist').addEventListener('click', () => {
+        document.getElementById('playlist-picker').close();
+    });
+
+    document.querySelector('.toggle-create-playlist').addEventListener('click', () => {
+        document.getElementById('playlist-create').showModal();
+    });
+
+    document.querySelector('.cancel-generate-playlist').addEventListener('click', () => {
+        document.getElementById('playlist-create').close();
+    });
+
+    const togglePipWindowButton = document.querySelector('.toggle-pip');
+    togglePipWindowButton.addEventListener('click', togglePiPWindow);
 
     // Gebruik van custom dispatch event met behulp van AI https://claude.ai/share/e9a554ec-32c7-49c9-98f6-5cae9f4c2a1d
-
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
         const songElement = document.getElementById('embed-iframe-song');
         const playListElement = document.getElementById('embed-iframe-playlist');
@@ -45,7 +97,7 @@ const { title, backgroundImage } = Astro.props;
             uri: null
         };
         const playListOptions = {
-            uri: 'spotify:playlist:0hTYBFqMRQh6mRGomeRYt9?si=115404279e13435d'
+            uri: `spotify:playlist:${playListId}`
         };
         const songCallback = (controller) => {
             window.dispatchEvent(new CustomEvent('song-controller-ready', {
@@ -60,4 +112,28 @@ const { title, backgroundImage } = Astro.props;
         IFrameAPI.createController(songElement, songOptions, songCallback);
         IFrameAPI.createController(playListElement, playListOptions, playListCallback);
     };
+
+    async function togglePiPWindow() {
+        if (pipWindow) {
+            pipWindow.close();
+            pipWindow = null;
+            return;
+        }
+        pipWindow = await documentPictureInPicture.requestWindow({
+            width: 300,
+            height: 500
+        });
+
+        const element = document.getElementById('playlist-iframe-wrapper');
+        const style = document.createElement('style');
+        style.textContent = 'body{margin: 0; overflow: hidden;} iframe{height:100dvh;}'
+
+        pipWindow.document.body.append(style);
+        pipWindow.document.body.append(element);
+
+        pipWindow.addEventListener('pagehide', () => {
+            const body = document.querySelector('body');
+            body.append(element);
+        })
+    }
 </script>

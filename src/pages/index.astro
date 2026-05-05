@@ -2,92 +2,74 @@
 import { createPlaylist } from "../api";
 import MainLayout from '../layouts/MainLayout.astro';
 import Button from '../components/Button/Button.astro';
+import Link from "../components/Link/Link.astro";
 import PlayListPreview from '../components/PlayListPreview/PlayListPreview.astro';
 
 import { genres } from '../data/spotifyGenres.json';
 
 import '../style/index.css';
 
-const userToken = Astro.cookies.get('spotify_token')?.value;
+let playList = undefined;
+const userToken = 't'//Astro.cookies.get('spotify_token')?.value;
 
-if (Astro.url.searchParams && userToken) {
+if (Astro.url.searchParams.get('name') && userToken) {
 	const name = Astro.url.searchParams.get('name');
 	const description = Astro.url.searchParams.get('description');
 	const isPublic = Astro.url.searchParams.get('public') === 'on';
 
-	const playList = await createPlaylist(userToken, name, description, isPublic);
+	playList = {id: '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb'};
+	//playList = await createPlaylist(userToken, name, description, isPublic);
+	Astro.cookies.set('current_playlist_id', playList.id);
+} else if (!userToken) {
+	Astro.cookies.delete('current_playlist_id');
 }
 
 ---
 
 
 <MainLayout title="Find your songs!">
+	<div class="page">
 	{
-		!userToken && (
-			<a href="/auth/spotifyLogin"> Log in met spotify </a>
+		!userToken ? (
+			<div class="log-in">
+				<h3>Log in met spotify om de songerator te gebruiken</h3>
+				<Link url="/auth/spotifyLogin" isButtonLike > Log in </Link>
+			</div>
+		) : (
+			<!--<> {-->
+			<!--	!playList?.id && (-->
+
+			<!--	)-->
+			<!--}-->
+
+			<!--</>-->
+
+			<form method="GET" action="/genre">
+				<label for="genre-select"> Select a genre </label>
+				<select id="genre-select" name="genre">
+					{
+						genres.map(genre => {
+							return (
+								<option value={genre}>
+									{genre}
+								</option>
+							)
+						})
+					}
+				</select>
+				<Button buttonClassName="generate-button" text="Generate Songs" />
+			</form>
+
+			<PlayListPreview />
 		)
 	}
+	</div>
 
-	<form method="GET" action="/">
-		<label> Playlist Name
-			<input id="playlist-name" name='name' type="text">
-		</label>
-		<label> Playlist Description
-			<input id="playlist-description" name='description' type="text">
-		</label>
-		<label>
-			Playlist is public
-			<input id="playlist-public" name="public" type="checkbox">
-		</label>
-		<Button buttonClassName="generate-playlist-button" text="Create playlist" />
-	</form>
-	<form method="GET" action="/genre">
-		<label for="genre-select"> Select a genre </label>
-		<select id="genre-select" name="genre">
-			{
-				genres.map(genre => {
-					return (
-						<option value={genre}>
-							{genre}
-						</option>
-					)
-				})
-			}
-		</select>
-		<Button buttonClassName="generate-button" text="Generate Songs" />
-	</form>
-
-	<PlayListPreview />
 </MainLayout>
 
-<script>
+<script define:vars={{ playList }}>
 	// @ts-nocheck
-	import { createPlaylist } from '../api/spotifyApi.js'
 
-	let pipWindow;
 
-	async function togglePiPWindow() {
-
-		pipWindow = await documentPictureInPicture.requestWindow({
-			width: 300,
-			height: 75,
-			disallowReturnToOpener: true
-		});
-
-		//@TODO: Zet hier dus het element wat ik in de document pip wil.
-		//const element =
-		const style = document.createElement('style');
-		style.textContent = 'body{margin: 0; overflow: hidden;}'
-
-		pipWindow.addEventListener('pagehide', () => {
-			const body = document.querySelector('body');
-			body.append(element);
-
-			setSongInactive(songItem);
-		})
-
-		pipWindow.document.body.append(style);
-		//pipWindow.document.body.append(element);
-	}
 
 </script>

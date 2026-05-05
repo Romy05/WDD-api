@@ -7,7 +7,9 @@ const {
     activeIcon,
     text,
     hideText,
+    isSecondary,
     transparent,
+    type = 'button',
     background = {},
     buttonClassName = '',
 } = Astro.props;
@@ -19,7 +21,7 @@ const ActiveIcon = SVGs[activeIcon];
 
 //Inladen van Icons met behulp van Cyd & stack overflow https://stackoverflow.com/questions/76985138/any-way-to-init-an-astro-component-by-string
 
-const classNames = 'btn-wrapper ' + (hasTransparentBackground ? 'transparent ' : '');
+const classNames = 'btn-wrapper ' + (hasTransparentBackground ? 'transparent ' : '') + (isSecondary ? 'secondary ': '');
 ---
 
 <div class={classNames}>
@@ -28,7 +30,7 @@ const classNames = 'btn-wrapper ' + (hasTransparentBackground ? 'transparent ' :
                 <img class="button-background" src={backgroundUrl} alt={backgroundTitle} />
         }
 
-        <button aria-label={text} class={`${buttonClassName} button`} title={text}>
+        <button type={type} aria-label={text} class={`${buttonClassName} button`} title={text}>
             {icon &&
                     <span class="icon"><Icon /></span>
             }

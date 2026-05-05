@@ -1,13 +1,18 @@
 .btn-wrapper {
     --text-color: var(--color-button-text);
     --background-color: var(--color-red);
-    --shadow-color: var(--color-black);
+    --shadow-color: var(--color-dark);
     --button-height: 2rem;
 
     display: inline-flex;
     align-items: center;
     position: relative;
     filter: drop-shadow(10px 4px 0 var(--shadow-color));
+
+    &.secondary {
+        --background-color: var(--color-dark);
+        --shadow-color: var(--color-red);
+    }
 
     .icon {
         color: var(--text-color);
