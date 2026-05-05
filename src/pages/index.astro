@@ -10,15 +10,15 @@ import { genres } from '../data/spotifyGenres.json';
 import '../style/index.css';
 
 let playList = undefined;
-const userToken= 't' //Astro.cookies.get('spotify_token')?.value;
+const userToken= Astro.cookies.get('spotify_token')?.value;
 
 if (Astro.url.searchParams.get('name') && userToken) {
 	const name = Astro.url.searchParams.get('name');
 	const description = Astro.url.searchParams.get('description');
 	const isPublic = Astro.url.searchParams.get('public') === 'on';
 
-	playList = {id: '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb'};
-	//playList = await createPlaylist(userToken, name, description, isPublic);
+	//playList = {id: '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb'};
+	playList = await createPlaylist(userToken, name, description, isPublic);
 	Astro.cookies.set('current_playlist_id', playList.id);
 } else if (!userToken) {
 	Astro.cookies.delete('current_playlist_id');
