@@ -53,6 +53,7 @@ const albumCoverUrl = song.album.images[0].url || '';
     try {
         savedSongs = JSON.parse(localStorage.getItem('savedSongs'));
     } catch {
+        console.log('saved songs catched');
         savedSongs = [];
         localStorage.removeItem('savedSongs');
     }
