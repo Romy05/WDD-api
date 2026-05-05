@@ -49,14 +49,13 @@ const albumCoverUrl = song.album.images[0].url || '';
 </div>
 
 <script is:inline define:vars={{ song }}>
-    let savedSongs;
-    try {
-        savedSongs = JSON.parse(localStorage.getItem('savedSongs'));
-    } catch {
-        console.log('saved songs catched');
-        savedSongs = [];
+    const savedSongs = JSON.parse(localStorage.getItem('savedSongs') ?? '[]');
+
+    if (savedSongs.length === 0) {
         localStorage.removeItem('savedSongs');
     }
+
+    console.log(savedSongs.length, 'songslength');
 
     const saveButton = document.querySelector('.song-save-button');
     const unsaveButton = document.querySelector('.song-unsave-button');
