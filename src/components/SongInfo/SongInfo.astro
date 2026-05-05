@@ -60,6 +60,7 @@ const albumCoverUrl = song.album.images[0].url || '';
     const saveButton = document.querySelector('.song-save-button');
     const unsaveButton = document.querySelector('.song-unsave-button');
 
+    console.log(unsaveButton, saveButton);
     if (savedSongs.includes(song.id)) {
         saveButton.closest('.btn-wrapper').classList.add('invisible');
         unsaveButton.closest('.btn-wrapper').classList.remove('invisible');
