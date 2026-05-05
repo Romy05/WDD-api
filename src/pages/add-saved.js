@@ -9,5 +9,5 @@ export async function POST({ request, cookies, redirect }) {
     const uris = ids.map(id => `spotify:track:${id}`);
     await addItemsToPlaylist(userToken, playlistId, uris);
 
-    return redirect('/add-saved-success');
+    return redirect('/');
 }
