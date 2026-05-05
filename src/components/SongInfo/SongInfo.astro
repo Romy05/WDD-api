@@ -3,9 +3,8 @@ import Button from '../Button/Button.astro';
 
 import './songInfo.css';
 
-const { song, isInsidePlaylist } = Astro.props;
+const { song } = Astro.props;
 const albumCoverUrl = song.album.images[0].url || '';
-
 ---
 
 <div data-uri={song.uri} class="song-container">
@@ -43,11 +42,42 @@ const albumCoverUrl = song.album.images[0].url || '';
             }
         </div>
         <div class="buttons">
-            {   isInsidePlaylist
-                ? <Button text="Remove" />
-                : <Button text="Add" />
-            }
+            <Button buttonClassName="song-save-button" text="Save" />
+            <Button buttonClassName="song-unsave-button" secondary text="Unsave" />
         </div>
     </div>
-
 </div>
+
+<script is:inline define:vars={{ song }}>
+    let savedSongs;
+    try {
+        savedSongs = JSON.parse(localStorage.getItem('savedSongs'));
+    } catch {
+        savedSongs = [];
+        localStorage.removeItem('savedSongs');
+    }
+
+    const saveButton = document.querySelector('.song-save-button');
+    const unsaveButton = document.querySelector('.song-unsave-button');
+
+    if (savedSongs.includes(song.id)) {
+        saveButton.closest('.btn-wrapper').classList.add('invisible');
+        unsaveButton.closest('.btn-wrapper').classList.remove('invisible');
+    } else {
+        unsaveButton.closest('.btn-wrapper').classList.add('invisible');
+        saveButton.closest('.btn-wrapper').classList.remove('invisible');
+    }
+
+    saveButton.addEventListener('click', () => {
+        localStorage.setItem('savedSongs', JSON.stringify([...savedSongs, song.id]));
+        saveButton.closest('.btn-wrapper').classList.add('invisible');
+        unsaveButton.closest('.btn-wrapper').classList.remove('invisible');
+    });
+
+    unsaveButton.addEventListener('click', () => {
+        const newSavedSongs = savedSongs.filter(songId => songId != song.id)
+        localStorage.setItem('savedSongs', JSON.stringify(newSavedSongs));
+        unsaveButton.closest('.btn-wrapper').classList.add('invisible');
+        saveButton.closest('.btn-wrapper').classList.remove('invisible');
+    });
+</script>

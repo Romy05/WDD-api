@@ -32,7 +32,9 @@
     .link-wrapper {
         --link-color: #044504;
         --link-height: 2rem;
+        flex-grow: 2;
         display: flex;
+        justify-content: end;
 
         &::before,
         &::after {

@@ -129,7 +129,6 @@ export async function fetchSongs(genre = 'pop') {
 
     return currentSongs;
 }
-
 export async function createPlaylist(userToken, name = 'New Playlist', description = '', isPublic = false) {
     const playListOptions = {
         name,
@@ -154,6 +153,32 @@ export async function createPlaylist(userToken, name = 'New Playlist', descripti
         return await response.json();
     } catch (error) {
         console.log('Something went wrong while trying to create playlist', error);
+    }
+}
+
+export async function addItemsToPlaylist(userToken, playListId, items){
+    const url = `https://api.spotify.com/v1/playlists/${playlistId}/items`;
+
+    const playListOptions = {
+        uris: items
+    }
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${userToken}`,
+            },
+            body: JSON.stringify(playListOptions),
+        });
+
+        if (!response.ok) {
+            console.log('Something went wrong while trying to add to playlist', response);
+            return;
+        }
+        return await response.json();
+    } catch (error) {
+        console.log('Something went wrong while trying to add to playlist', error);
     }
 }
 

@@ -1,9 +1,6 @@
 ---
 import './header.css';
-import { fetchSongs } from '../../api/spotifyApi.js';
-const currentPath = Astro.url.pathname;
-
-//const songs = await fetchSongs();
+import Button from '../Button/Button.astro';
 ---
 
 <header>
@@ -11,15 +8,18 @@ const currentPath = Astro.url.pathname;
     <nav class="navigation">
         <ul>
             <li>
-                <a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
-                <!--{-->
-                <!--    songs.map(song => {-->
-                <!--       return (-->
-                <!--           <a href=`/song/${song.id}` class={currentPath === `/song/${song.id}` ? 'active' : ''}>{song.name}</a>-->
-                <!--       )-->
-                <!--    })-->
-                <!--}-->
+                <form method="POST" action="/add-saved">
+                    <input type="hidden" id="song-ids" name="ids" value="">
+                    <Button isSecondary type="submit" class="add-saved-btn" text="Add saved to playlist"/>
+                </form>
             </li>
         </ul>
     </nav>
 </header>
+
+<script is:inline>
+    document.querySelector('.add-saved-btn').addEventListener('click', (e) => {
+        const savedSongs = JSON.parse(localStorage.getItem('savedSongs') ?? '[]');
+        document.getElementById('song-ids').value = savedSongs.join(',');
+    });
+</script>

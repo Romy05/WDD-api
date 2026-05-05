@@ -5,7 +5,7 @@ header {
 }
 
 .navigation {
-
+    padding: 1rem;
 
     ul {
         list-style-type: none;
