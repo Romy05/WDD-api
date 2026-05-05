@@ -13,5 +13,8 @@ export default defineConfig({
     typescript: {
         allowJs: true,
         checkJs: false
+    },
+    security: {
+        checkOrigin: false
     }
 });
