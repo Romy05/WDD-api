@@ -32,10 +32,6 @@
     }
 }
 
-.invisible {
-    display: none;
-}
-
 .album-cover {
     width: 6rem;
     aspect-ratio: 1;
