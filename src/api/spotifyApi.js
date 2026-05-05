@@ -157,7 +157,7 @@ export async function createPlaylist(userToken, name = 'New Playlist', descripti
 }
 
 export async function addItemsToPlaylist(userToken, playListId, items){
-    const url = `https://api.spotify.com/v1/playlists/${playlistId}/items`;
+    const url = `https://api.spotify.com/v1/playlists/${playListId}/items`;
 
     const playListOptions = {
         uris: items
