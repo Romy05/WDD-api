@@ -36,13 +36,12 @@ if (Astro.url.searchParams.get('name') && userToken) {
 				<Link url="/auth/spotifyLogin" isButtonLike > Log in </Link>
 			</div>
 		) : (
-			<!--<> {-->
-			<!--	!playList?.id && (-->
-
-			<!--	)-->
-			<!--}-->
-
-			<!--</>-->
+			<> {
+				!playList?.id && (
+					<Button buttonClassName="pick-playlist" text="Pick a playlist" />
+				)
+			}
+			</>
 
 			<form method="GET" action="/genre">
 				<label for="genre-select"> Select a genre </label>
@@ -67,9 +66,10 @@ if (Astro.url.searchParams.get('name') && userToken) {
 
 </MainLayout>
 
-<script define:vars={{ playList }}>
-	// @ts-nocheck
+<script>
 
-
+	document.querySelector('.pick-playlist').addEventListener('click', () => {
+		document.getElementById('playlist-picker').showModal();
+	});
 
 </script>
