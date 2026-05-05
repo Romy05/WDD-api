@@ -67,20 +67,20 @@ const playListId = Astro.cookies.get('current_playlist_id')?.value;
 <script is:inline define:vars={{ playListId }}>
     let pipWindow;
 
-    document.querySelector('.change-playlist').addEventListener('click', () => {
-        document.getElementById('playlist-picker').showModal();
+    document.querySelector('.change-playlist')?.addEventListener('click', () => {
+        document.getElementById('playlist-picker')?.showModal();
     });
 
-    document.querySelector('.cancel-change-playlist').addEventListener('click', () => {
-        document.getElementById('playlist-picker').close();
+    document.querySelector('.cancel-change-playlist')?.addEventListener('click', () => {
+        document.getElementById('playlist-picker')?.close();
     });
 
-    document.querySelector('.toggle-create-playlist').addEventListener('click', () => {
-        document.getElementById('playlist-create').showModal();
+    document.querySelector('.toggle-create-playlist')?.addEventListener('click', () => {
+        document.getElementById('playlist-create')?.showModal();
     });
 
-    document.querySelector('.cancel-generate-playlist').addEventListener('click', () => {
-        document.getElementById('playlist-create').close();
+    document.querySelector('.cancel-generate-playlist')?.addEventListener('click', () => {
+        document.getElementById('playlist-create')?.close();
     });
 
     const togglePipWindowButton = document.querySelector('.toggle-pip');
