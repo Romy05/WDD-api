@@ -55,7 +55,7 @@ const albumCoverUrl = song.album.images[0].url || '';
         localStorage.removeItem('savedSongs');
     }
 
-    console.log(savedSongs.length, 'songslength');
+    console.log(savedSongs.length,savedSongs, 'songslength');
 
     const saveButton = document.querySelector('.song-save-button');
     const unsaveButton = document.querySelector('.song-unsave-button');
