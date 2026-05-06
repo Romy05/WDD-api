@@ -39,5 +39,5 @@
     display: grid;
     gap: 1rem;
     align-items: start;
-    grid-template-columns: repeat(auto-fit, minmax(1fr, 5rem))
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr))
 }
