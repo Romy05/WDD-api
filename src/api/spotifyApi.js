@@ -203,7 +203,7 @@ export async function addItemsToPlaylist(userToken, playListId, items){
 
 export async function fetchUserPlaylists(userToken){
     const url = `https://api.spotify.com/v1/me/playlists`;
-    const {currentUserId: id} = await fetchCurrentUser(userToken);
+    const currentUser = await fetchCurrentUser(userToken);
 
     try {
         const response = await fetch(url, {
@@ -219,7 +219,7 @@ export async function fetchUserPlaylists(userToken){
         }
         const data = await response.json();
 
-        return data.items.filter(playList => playList.owner.id === currentUserId)
+        return data.items.filter(playList => playList.owner.id === currentUser.id)
     } catch (error) {
         console.log('Something went wrong while trying to fetch your playlists', error);
     }
