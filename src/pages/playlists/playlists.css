@@ -33,6 +33,7 @@
         grid-area: title;
         font-weight: bold;
         align-self: end;
+        font-size: xx-large;
     }
 
     .description {
