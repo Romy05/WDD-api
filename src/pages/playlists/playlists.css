@@ -10,7 +10,6 @@
 .playlist-container {
     display: grid;
     width: 100%;
-    align-items: center;
     grid-template-areas:
         "img title"
         "desc desc"
@@ -32,8 +31,8 @@
     .name {
         grid-area: title;
         font-weight: bold;
-        align-self: end;
-        font-size: xx-large;
+        align-self: center;
+        font-size: x-large;
     }
 
     .description {
