@@ -1,5 +1,14 @@
 .playlist-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-areas:
+    " img title "
+    " desc desc "
+    " btn btn ";
+
     img {
+        grid-area: img;
         width: 3rem;
         aspect-ratio: 1/1;
     }
@@ -9,9 +18,17 @@
     }
 
     .name {
+        grid-area: title;
         font-weight: bold;
     }
 
+    .description {
+        grid-area: description;
+    }
+
+    .btn-wrapper {
+        grid-area: btn;
+    }
 }
 
 .playlists-container {
