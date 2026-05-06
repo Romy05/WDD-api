@@ -23,7 +23,7 @@
     }
 
     .description {
-        grid-area: description;
+        grid-area: desc;
     }
 
     .btn-wrapper {
@@ -33,4 +33,5 @@
 
 .playlists-container {
     display: grid;
+    grid-template-columns: auto auto;
 }
