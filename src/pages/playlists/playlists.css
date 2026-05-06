@@ -6,11 +6,13 @@
     " img title "
     " desc desc "
     " btn btn ";
+    gap: .5rem;
 
     img {
         grid-area: img;
         width: 3rem;
         aspect-ratio: 1/1;
+        align-self: start;
     }
 
     span {
@@ -20,9 +22,11 @@
     .name {
         grid-area: title;
         font-weight: bold;
+        align-self: end;
     }
 
     .description {
+        align-self: start;
         grid-area: desc;
     }
 
@@ -33,5 +37,6 @@
 
 .playlists-container {
     display: grid;
+    gap: 1rem;
     grid-template-columns: auto auto;
 }
