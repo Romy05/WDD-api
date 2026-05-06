@@ -17,7 +17,6 @@
     grid-template-rows: auto 1fr auto; /* ← dit is de truc */
     gap: .5rem;
     border: 2px solid var(--color-dark);
-    border-radius: .25em;
 
     img {
         grid-area: img;
