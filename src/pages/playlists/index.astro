@@ -24,7 +24,8 @@ const playLists = await fetchUserPlaylists(userToken);
         {
             playLists && playLists.map(playList => {
                return (
-                   <div class="playlist-container">
+                   <form method="POST" action="/playlists" class="playlist-container">
+                       <input type="hidden" name="playlistId" value={playList.id} />
                        <img
                                alt={playList.name}
                                src={playList.images && playList.images.length > 0
@@ -33,11 +34,8 @@ const playLists = await fetchUserPlaylists(userToken);
                        />
                        <span class="name">{playList.name}</span>
                        <span class="description">{playList.description}</span>
-                       <form method="POST" action="/playlists">
-                           <input type="hidden" name="playlistId" value={playList.id} />
-                           <Button type="submit" buttonClassName="use-playlist-button" text="Use playlist" />
-                       </form>
-                   </div>
+                       <Button type="submit" buttonClassName="use-playlist-button" text="Use playlist" />
+                   </form>
                )
             })
         }
