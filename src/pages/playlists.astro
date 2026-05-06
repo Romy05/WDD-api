@@ -14,10 +14,10 @@ const playLists = await fetchUserPlaylists(userToken);
             playLists && playLists.map(playList => {
                return (
                    <div class="playlist-container">
-                       <img alt=" " src={playList.images[0].url || 'public/images/audio.svg'} />
+                       <img alt=" " src={playList.images[0]?.url ? playList.images[0]?.url : 'public/images/audio.svg'} />
                        {playList.name}
                        {playList.description}
-                       <Button text="Use playlist"></Button>
+                       <Button buttonClassName="use-playlist-button" text="Use playlist"></Button>
                    </div>
                )
             })
