@@ -11,6 +11,19 @@ html {
     display: flex;
     justify-content: space-around;
     align-items: center;
-
+    padding-inline: 1rem;
     view-transition-name: song-detail;
+}
+
+.link-wrapper:has(.navigation-link) {
+    position: absolute;
+    z-index: 50;
+
+    &:has(#next-song-link) {
+        right: 12.5%;
+    }
+
+    &:has(#previous-song-link) {
+        left: 12.5%;
+    }
 }

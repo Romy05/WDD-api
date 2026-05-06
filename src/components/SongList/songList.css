@@ -1,6 +1,6 @@
 .song-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
     list-style-type: none;
     padding: 0;
 
@@ -38,6 +38,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media (max-width: 600px) {
+            gap: .5rem;
+            padding-block: 1rem;
+            align-items: start;
+            flex-direction: column;
+        }
     }
 
     .link-wrapper {

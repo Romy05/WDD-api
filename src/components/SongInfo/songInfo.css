@@ -64,7 +64,7 @@
 
 .vinyl-record {
     display: flex;
-    --size: 50vh;
+    --size: 30dvw;
     height: var(--size);
     aspect-ratio: 1/1;
     align-items: center;

@@ -41,7 +41,7 @@
     }
 
     &:has(img) {
-        --button-height: 50vh;
+        --button-height: 30dvw;
         button {
             height: unset;
         }

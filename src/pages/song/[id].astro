@@ -21,10 +21,10 @@ if (!song) {
 
 <MainLayout backgroundImage={song.album.images[0].url} title={song.name}>
     <Link isButtonLike url="/genre" className="back-list-button">Back to list</Link>
-    <div class="detail-page">
-        <Link linkId="previous-song-link" isButtonLike>Previous</Link>
-        <SongInfo song={song} />
-        <Link linkId="next-song-link" isButtonLike>Next</Link>
+   <div class="detail-page">
+       <Link className="navigation-link" linkId="previous-song-link" isButtonLike>Previous</Link>
+       <SongInfo song={song} />
+       <Link className="navigation-link" linkId="next-song-link" isButtonLike>Next</Link>
     </div>
 
 </MainLayout>
