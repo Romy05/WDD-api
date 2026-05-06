@@ -197,7 +197,8 @@ export async function fetchUserPlaylists(userToken){
             console.log('Something went wrong while trying to fetch your playlists', response);
             return;
         }
-        return await response.json();
+        const data = await response.json();
+        return data.items;
     } catch (error) {
         console.log('Something went wrong while trying to fetch your playlists', error);
     }

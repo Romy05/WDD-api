@@ -12,8 +12,10 @@ console.log(playLists)
     <div class="page">
         {
             playLists && playLists.map(playList => {
+                console.log(playList.owner)
                return (
                    <div>{playList.name}</div>
+                   <div>{playList.owner}
                )
             })
         }
