@@ -34,8 +34,6 @@ async function fetchSpotifyAuthToken() {
     }
 }
 
-
-
 export async function fetchSpotifyArtistsByGenre(genre, offset = 0, limit = 5) {
     const authToken = await fetchSpotifyAuthToken();
 
@@ -129,6 +127,27 @@ export async function fetchSongs(genre = 'pop') {
 
     return currentSongs;
 }
+
+export async function fetchCurrentUser(userToken) {
+    const url = 'https://api.spotify.com/v1/me/';
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${userToken}`,
+            },
+        });
+
+        if (!response.ok) {
+            console.log('Something went wrong while trying fetch current user', response);
+            return;
+        }
+        return await response.json();
+    } catch (error) {
+        console.log('Something went wrong while trying to fetch current user', error);
+    }
+}
 export async function createPlaylist(userToken, name = 'New Playlist', description = '', isPublic = false) {
     const playListOptions = {
         name,
@@ -184,6 +203,7 @@ export async function addItemsToPlaylist(userToken, playListId, items){
 
 export async function fetchUserPlaylists(userToken){
     const url = `https://api.spotify.com/v1/me/playlists`;
+    const {currentUserId: id} = await fetchCurrentUser(userToken);
 
     try {
         const response = await fetch(url, {
@@ -198,7 +218,8 @@ export async function fetchUserPlaylists(userToken){
             return;
         }
         const data = await response.json();
-        return data.items;
+
+        return data.items.filter(playList => playList.owner.id === currentUserId)
     } catch (error) {
         console.log('Something went wrong while trying to fetch your playlists', error);
     }
