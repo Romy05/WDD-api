@@ -9,9 +9,9 @@ import { genres } from '../data/spotifyGenres.json';
 import '../style/index.css';
 
 let playListId = Astro.cookies.get('current_playlist_id')?.value || undefined;
-
-console.log(playListId)
 const userToken= Astro.cookies.get('spotify_token')?.value;
+
+let showForm = playListId !== undefined;
 
 if (Astro.url.searchParams.get('name') && userToken) {
 	const name = Astro.url.searchParams.get('name');
@@ -24,6 +24,8 @@ if (Astro.url.searchParams.get('name') && userToken) {
 		console.log('setting playlist id in cookies')
 		const playList = await createPlaylist(userToken, name, description, isPublic);
 		Astro.cookies.set('current_playlist_id', playList.id);
+
+		showForm = true;
 	}
 } else if (!userToken) {
 	Astro.cookies.delete('current_playlist_id');
@@ -42,7 +44,7 @@ if (Astro.url.searchParams.get('name') && userToken) {
 			</div>
 		) : (
 			<> {
-				playListId ? (
+				showForm ? (
 					<form method="GET" action="/genre">
 					<label for="genre-select"> Select a genre </label>
 					<select id="genre-select" name="genre">
