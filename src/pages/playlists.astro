@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 const userToken = Astro.cookies.get('spotify_token')?.value;
 const playLists = await fetchUserPlaylists(userToken);
+console.log(playLists)
 ---
 
 
