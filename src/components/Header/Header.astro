@@ -7,7 +7,7 @@ import Button from '../Button/Button.astro';
     <a class="logo" href="/"><span>S</span><span>o</span><span>n</span><span>g</span><span>e</span><span>r</span><span>a</span><span>t</span><span>o</span><span>r</span></a>
     <nav class="navigation">
         <ul>
-            <li>
+            <li id="add-saved-form">
                 <form method="POST" action="/add-saved">
                     <input type="hidden" id="song-ids" name="ids" value="">
                     <Button isSecondary type="submit" buttonClassName="add-saved-btn" text="Add saved to playlist"/>
@@ -18,8 +18,13 @@ import Button from '../Button/Button.astro';
 </header>
 
 <script is:inline>
+    const savedSongs = JSON.parse(localStorage.getItem('savedSongs') ?? '[]');
+    console.log(savedSongs, savedSongs.length)
+    if (savedSongs.length === 0) {
+        document.getElementById('add-saved-form').classList.add('invisible');
+    }
+
     document.querySelector('.add-saved-btn').addEventListener('click', (e) => {
-        const savedSongs = JSON.parse(localStorage.getItem('savedSongs') ?? '[]');
         document.getElementById('song-ids').value = savedSongs.join(',');
         localStorage.removeItem('savedSongs');
     });

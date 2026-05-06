@@ -15,4 +15,8 @@ header {
         align-items: center;
         justify-content: center;
     }
+
+    li.invisible {
+        display: none;
+    }
 }

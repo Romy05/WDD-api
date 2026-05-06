@@ -55,12 +55,9 @@ const albumCoverUrl = song.album.images[0].url || '';
         localStorage.removeItem('savedSongs');
     }
 
-    console.log(savedSongs.length,savedSongs, 'songslength');
-
     const saveButton = document.querySelector('.song-save-button');
     const unsaveButton = document.querySelector('.song-unsave-button');
 
-    console.log(unsaveButton, saveButton);
     if (savedSongs.includes(song.id)) {
         saveButton.closest('.btn-wrapper').classList.add('invisible');
         unsaveButton.closest('.btn-wrapper').classList.remove('invisible');
@@ -73,6 +70,7 @@ const albumCoverUrl = song.album.images[0].url || '';
         localStorage.setItem('savedSongs', JSON.stringify([...savedSongs, song.id]));
         saveButton.closest('.btn-wrapper').classList.add('invisible');
         unsaveButton.closest('.btn-wrapper').classList.remove('invisible');
+        window.location.reload();
     });
 
     unsaveButton.addEventListener('click', () => {
@@ -80,5 +78,6 @@ const albumCoverUrl = song.album.images[0].url || '';
         localStorage.setItem('savedSongs', JSON.stringify(newSavedSongs));
         unsaveButton.closest('.btn-wrapper').classList.add('invisible');
         saveButton.closest('.btn-wrapper').classList.remove('invisible');
+        window.location.reload();
     });
 </script>
