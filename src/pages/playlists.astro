@@ -14,7 +14,12 @@ const playLists = await fetchUserPlaylists(userToken);
             playLists && playLists.map(playList => {
                return (
                    <div class="playlist-container">
-                       <img alt=" " src={playList.images[0]?.url ? playList.images[0]?.url : 'public/images/audio.svg'} />
+                       <img
+                               alt={playList.name}
+                               src={playList.images && playList.images.length > 0
+                                   ? playList.images[0].url
+                                   : '/images/audio.svg'}
+                       />
                        {playList.name}
                        {playList.description}
                        <Button buttonClassName="use-playlist-button" text="Use playlist"></Button>
