@@ -38,5 +38,6 @@
 .playlists-container {
     display: grid;
     gap: 1rem;
-    grid-template-columns: auto auto;
+    align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 5rem))
 }
