@@ -1,7 +1,7 @@
 .playlist-container {
     display: grid;
-    align-items: center;
-    justify-content: end;
+    align-items: stretch;
+    justify-content: center;
     grid-template-areas:
     " img title "
     " desc desc "
@@ -40,5 +40,6 @@
     display: grid;
     gap: 3rem;
     align-items: stretch;
+    justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr))
 }
