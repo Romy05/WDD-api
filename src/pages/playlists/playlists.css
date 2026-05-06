@@ -1,13 +1,20 @@
+.playlists-container {
+    width: 100%;
+    display: grid;
+    gap: 3rem;
+    align-items: stretch;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+}
+
 .playlist-container {
     display: grid;
-    height: 100%;
     width: 100%;
-    align-items: center;
-    justify-content: center;
     grid-template-areas:
-    " img title "
-    " desc desc "
-    " btn btn ";
+        "img title"
+        "desc desc"
+        "btn btn";
+    grid-template-rows: auto 1fr auto; /* ← dit is de truc */
     gap: .5rem;
 
     img {
@@ -36,13 +43,4 @@
         margin-top: auto;
         grid-area: btn;
     }
-}
-
-.playlists-container {
-    width: 100%;
-    display: grid;
-    gap: 3rem;
-    align-items: stretch;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr))
 }
