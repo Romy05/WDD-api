@@ -6,7 +6,6 @@ import './songInfo.css';
 const { song } = Astro.props;
 const albumCoverUrl = song.album.images[0].url || '';
 ---
-
 <div data-uri={song.uri} class="song-container">
 
     <div class="lp">

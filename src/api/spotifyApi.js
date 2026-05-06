@@ -182,3 +182,23 @@ export async function addItemsToPlaylist(userToken, playListId, items){
     }
 }
 
+export async function fetchUserPlaylists(userToken){
+    const url = `https://api.spotify.com/v1/me/playlists`;
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${userToken}`,
+            },
+        });
+
+        if (!response.ok) {
+            console.log('Something went wrong while trying to fetch your playlists', response);
+            return;
+        }
+        return await response.json();
+    } catch (error) {
+        console.log('Something went wrong while trying to fetch your playlists', error);
+    }
+}

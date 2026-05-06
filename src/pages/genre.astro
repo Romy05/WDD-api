@@ -7,9 +7,31 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 import '../style/index.css';
 
-const genre = Astro.url.searchParams.get("genre");
-const songs = await fetchSongs(genre);
+let genre = Astro.url.searchParams.get("genre");
+let songs = [];
 
+if (genre) {
+    songs = await fetchSongs(genre);
+    console.log(songs, 'songs')
+    Astro.cookies.set('currentGenre', genre);
+    const songsToSave = songs.map(song => {
+        return {
+            id: song.id,
+            name: song.name,
+            artists: [{name: song.artists[0].name}],
+            album: {
+                images: [{url: song.album.images[0].url}]
+            }
+        }
+    })
+    Astro.cookies.set('currentSongs', JSON.stringify(songsToSave));
+} else {
+    genre = Astro.cookies.get('currentGenre')?.value;
+    const cookieSongs = Astro.cookies.get('currentSongs')?.value;
+    songs = JSON.parse(cookieSongs || '[]');
+}
+
+console.log("Actief genre:", genre, songs);
 
 ---
 

@@ -1,10 +1,12 @@
 ---
 import Header from '../components/Header/Header.astro';
 import SongPreview from '../components/SongPreview/SongPreview.astro';
-import '../style/index.css';
-import './mainLayout.css';
+import Link from '../components/Link/Link.astro';
 import Button from "../components/Button/Button.astro";
 import PlayListPreview from "../components/PlayListPreview/PlayListPreview.astro";
+
+import '../style/index.css';
+import './mainLayout.css';
 
 const { title, backgroundImage } = Astro.props;
 const playListId = Astro.cookies.get('current_playlist_id')?.value;
@@ -21,7 +23,7 @@ const playListId = Astro.cookies.get('current_playlist_id')?.value;
     <PlayListPreview />
 </div>
 <dialog id="playlist-picker">
-    <Button isSecondary buttonClassName="choose-existing" text="Choose an existing playlist" />
+    <Link url="/playlists" isButtonLike className="choose-existing">Choose an existing playlist</Link>
     <Button isSecondary buttonClassName="toggle-create-playlist" text="Create new playlist" />
     <dialog id="playlist-create">
         <form method="GET" action="/">
@@ -40,9 +42,6 @@ const playListId = Astro.cookies.get('current_playlist_id')?.value;
                 <Button type="submit" buttonClassName="generate-playlist-button" text="Create playlist" />
             </div>
         </form>
-    </dialog>
-    <dialog id="choose-existing">
-
     </dialog>
     <Button buttonClassName="cancel-change-playlist" text="Cancel"/>
 </dialog>
@@ -88,7 +87,9 @@ const playListId = Astro.cookies.get('current_playlist_id')?.value;
     });
 
     const togglePipWindowButton = document.querySelector('.toggle-pip');
-    togglePipWindowButton.addEventListener('click', togglePiPWindow);
+    togglePipWindowButton.addEventListener('click', (event) => {
+        togglePiPWindow(event)
+    });
 
     // Gebruik van custom dispatch event met behulp van AI https://claude.ai/share/e9a554ec-32c7-49c9-98f6-5cae9f4c2a1d
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
@@ -117,12 +118,14 @@ const playListId = Astro.cookies.get('current_playlist_id')?.value;
         IFrameAPI.createController(playListElement, playListOptions, playListCallback);
     };
 
-    async function togglePiPWindow() {
+    async function togglePiPWindow(event) {
         if (pipWindow) {
+            event.currentTarget.innerHTML = 'View playlist'
             pipWindow.close();
             pipWindow = null;
             return;
         }
+        event.currentTarget.innerHTML = 'Close playlist'
         pipWindow = await documentPictureInPicture.requestWindow({
             width: 300,
             height: 500

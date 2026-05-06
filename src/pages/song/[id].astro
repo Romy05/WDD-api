@@ -16,9 +16,11 @@ if (!song) {
     return Astro.redirect('/');
 }
 
+
 ---
 
 <MainLayout backgroundImage={song.album.images[0].url} title={song.name}>
+    <Link isButtonLike url="/genre" className="back-list-button">Back to list</Link>
     <div class="detail-page">
         <Link linkId="previous-song-link" isButtonLike>Previous</Link>
         <SongInfo song={song} />
@@ -43,6 +45,11 @@ if (!song) {
 
 <script is:inline>
     let embedController = null;
+
+    const backToListButton = document.querySelector('.back-list-button');
+    backToListButton.addEventListener('click', () => {
+
+    });
 
     window.addEventListener('song-controller-ready', (e) => {
         console.log('controller', e.detail.controller);

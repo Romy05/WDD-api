@@ -1,0 +1,20 @@
+---
+import { fetchUserPlaylists } from "../api";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const userToken = Astro.cookies.get('spotify_token')?.value;
+const playLists = await fetchUserPlaylists(userToken);
+---
+
+
+<MainLayout title="Find your songs!">
+    <div class="page">
+        {
+            playLists && playLists.map(playList => {
+               return (
+                   <div>{playList.name}</div>
+               )
+            })
+        }
+    </div>
+</MainLayout>
