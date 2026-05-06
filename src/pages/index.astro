@@ -3,13 +3,14 @@ import { createPlaylist } from "../api";
 import MainLayout from '../layouts/MainLayout.astro';
 import Button from '../components/Button/Button.astro';
 import Link from "../components/Link/Link.astro";
-import PlayListPreview from '../components/PlayListPreview/PlayListPreview.astro';
 
 import { genres } from '../data/spotifyGenres.json';
 
 import '../style/index.css';
 
-let playList = undefined;
+let playListId = Astro.cookies.get('current_playlist_id')?.value || undefined;
+
+console.log(playListId)
 const userToken= Astro.cookies.get('spotify_token')?.value;
 
 if (Astro.url.searchParams.get('name') && userToken) {
@@ -17,9 +18,13 @@ if (Astro.url.searchParams.get('name') && userToken) {
 	const description = Astro.url.searchParams.get('description');
 	const isPublic = Astro.url.searchParams.get('public') === 'on';
 
-	//playList = {id: '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb'};
-	playList = await createPlaylist(userToken, name, description, isPublic);
-	Astro.cookies.set('current_playlist_id', playList.id);
+	if (!playListId) {
+		//playListId = '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb';
+		//Astro.cookies.set('current_playlist_id', playListId);
+		console.log('setting playlist id in cookies')
+		const playList = await createPlaylist(userToken, name, description, isPublic);
+		Astro.cookies.set('current_playlist_id', playList.id);
+	}
 } else if (!userToken) {
 	Astro.cookies.delete('current_playlist_id');
 }
@@ -37,29 +42,29 @@ if (Astro.url.searchParams.get('name') && userToken) {
 			</div>
 		) : (
 			<> {
-				!playList?.id && (
+				playListId ? (
+					<form method="GET" action="/genre">
+					<label for="genre-select"> Select a genre </label>
+					<select id="genre-select" name="genre">
+						{
+							genres.map(genre => {
+								return (
+									<option value={genre}>
+										{genre}
+									</option>
+								)
+							})
+						}
+					</select>
+					<Button type="submit" buttonClassName="generate-button" text="Generate Songs" />
+				</form>
+				) : (
 					<Button buttonClassName="pick-playlist" text="Pick a playlist" />
 				)
 			}
 			</>
 
-			<form method="GET" action="/genre">
-				<label for="genre-select"> Select a genre </label>
-				<select id="genre-select" name="genre">
-					{
-						genres.map(genre => {
-							return (
-								<option value={genre}>
-									{genre}
-								</option>
-							)
-						})
-					}
-				</select>
-				<Button type="submit" buttonClassName="generate-button" text="Generate Songs" />
-			</form>
 
-			<PlayListPreview />
 		)
 	}
 	</div>

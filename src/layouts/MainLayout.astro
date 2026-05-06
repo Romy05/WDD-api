@@ -4,6 +4,7 @@ import SongPreview from '../components/SongPreview/SongPreview.astro';
 import '../style/index.css';
 import './mainLayout.css';
 import Button from "../components/Button/Button.astro";
+import PlayListPreview from "../components/PlayListPreview/PlayListPreview.astro";
 
 const { title, backgroundImage } = Astro.props;
 const playListId = Astro.cookies.get('current_playlist_id')?.value;
@@ -16,6 +17,9 @@ const playListId = Astro.cookies.get('current_playlist_id')?.value;
 </head>
 <body >
 <Header />
+<div id="playlist-preview-container">
+    <PlayListPreview />
+</div>
 <dialog id="playlist-picker">
     <Button isSecondary buttonClassName="choose-existing" text="Choose an existing playlist" />
     <Button isSecondary buttonClassName="toggle-create-playlist" text="Create new playlist" />
