@@ -18,15 +18,13 @@ if (Astro.url.searchParams.get('name') && userToken) {
 	const description = Astro.url.searchParams.get('description');
 	const isPublic = Astro.url.searchParams.get('public') === 'on';
 
-	if (!playListId) {
-		// playListId = '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb';
-		// Astro.cookies.set('current_playlist_id', playListId);
-		console.log('setting playlist id in cookies')
-		const playList = await createPlaylist(userToken, name, description, isPublic);
-		Astro.cookies.set('current_playlist_id', playList.id);
+	// playListId = '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb';
+	// Astro.cookies.set('current_playlist_id', playListId);
+	console.log('setting playlist id in cookies')
+	const playList = await createPlaylist(userToken, name, description, isPublic);
+	Astro.cookies.set('current_playlist_id', playList.id);
 
-		showForm = true;
-	}
+	showForm = true;
 } else if (!userToken) {
 	Astro.cookies.delete('current_playlist_id');
 }
