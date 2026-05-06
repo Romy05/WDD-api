@@ -12,6 +12,7 @@ const playLists = await fetchUserPlaylists(userToken);
 
 <MainLayout title="Pick one of your playlists">
     <div class="page">
+        <div class="playlists-container">
         {
             playLists && playLists.map(playList => {
                return (
@@ -22,12 +23,13 @@ const playLists = await fetchUserPlaylists(userToken);
                                    ? playList.images[0].url
                                    : '/images/audio.svg'}
                        />
-                       {playList.name}
-                       {playList.description}
+                       <span class="name">{playList.name}</span>
+                       <span class="description">{playList.description}</span>
                        <Button buttonClassName="use-playlist-button" text="Use playlist"></Button>
                    </div>
                )
             })
         }
+        </div>
     </div>
 </MainLayout>
