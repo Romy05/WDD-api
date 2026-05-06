@@ -17,11 +17,15 @@
     .song {
         display: flex;
         align-items: center;
-
+        min-width: 0;
         gap: 1rem;
 
         .song-title {
             font-weight: bold;
+        }
+
+        .song-info {
+            min-width: 0;
         }
     }
 
@@ -32,6 +36,7 @@
 
     .song-item {
         display: flex;
+        align-items: center;
         justify-content: space-between;
     }
 
@@ -39,6 +44,7 @@
         --link-color: #044504;
         --link-height: 2rem;
         flex-grow: 2;
+        flex-shrink: 0;
         display: flex;
         justify-content: end;
 
@@ -59,7 +65,7 @@
 
         a {
             height: var(--link-height);
-            padding-block: .5em;
+            padding-block: .25em;
             color: white;
             background-color: var(--link-color);
             text-decoration: none;

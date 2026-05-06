@@ -36,7 +36,7 @@
 .link {
     color: var(--link-color);
     height: var(--link-height);
-    padding-block: .5em;
+    padding-block: .25em;
     &.button {
         color: white;
         background-color: var(--link-color);
