@@ -8,7 +8,7 @@ import './playlists.css';
 if (Astro.request.method === 'POST') {
     const formData = await Astro.request.formData();
     const playlistId = formData.get('playlistId');
-    Astro.cookies.set('spotify_playlist', playlistId, { path: '/' });
+    Astro.cookies.set('current_playlist_id', playlistId);
     return Astro.redirect('/');
 }
 
