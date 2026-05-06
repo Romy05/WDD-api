@@ -1,10 +1,10 @@
 ---
 import { fetchUserPlaylists } from "../api";
 import MainLayout from "../layouts/MainLayout.astro";
+import Button from "../components/Button/Button.astro";
 
 const userToken = Astro.cookies.get('spotify_token')?.value;
 const playLists = await fetchUserPlaylists(userToken);
-console.log(playLists)
 ---
 
 
@@ -13,8 +13,12 @@ console.log(playLists)
         {
             playLists && playLists.map(playList => {
                return (
-                   <div>{playList.name}</div>
-                   <div>{playList.owner}</div>
+                   <div class="playlist-container">
+                       <img alt=" " src={playList.images[0].url || 'public/images/audio.svg'} />
+                       {playList.name}
+                       {playList.description}
+                       <Button text="Use playlist"></Button>
+                   </div>
                )
             })
         }
