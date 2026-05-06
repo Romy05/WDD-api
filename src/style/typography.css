@@ -32,11 +32,6 @@
     color: inherit;
 }
 
-a {
-    font-family: 'Roboto', sans-serif;
-    font-size: .8em;
-}
-
 .logo {
     text-decoration: none;
     * {
