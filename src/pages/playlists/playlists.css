@@ -36,6 +36,7 @@
 }
 
 .playlists-container {
+    width: 100%;
     display: grid;
     gap: 1rem;
     align-items: start;
