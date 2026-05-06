@@ -5,7 +5,7 @@
 export async function GET({ redirect }) {
     const client_id = import.meta.env.API_KEY_SPOTIFY_CLIENT_ID;
     const redirect_uri = import.meta.env.REDIRECT_URL;
-    const scope = 'playlist-modify-public playlist-modify-private playlist-read-private playlist-read-public';
+    const scope = 'playlist-modify-public playlist-modify-private playlist-read-private playlist-read-collaborative';
 
     const params = new URLSearchParams({
         response_type: 'code',
