@@ -5,6 +5,14 @@ import Button from "../../components/Button/Button.astro";
 
 import './playlists.css';
 
+if (Astro.request.method === 'POST') {
+    const formData = await Astro.request.formData();
+    const playlistId = formData.get('playlistId');
+    Astro.cookies.set('spotify_playlist', playlistId, { path: '/' });
+    return Astro.redirect('/');
+}
+
+
 const userToken = Astro.cookies.get('spotify_token')?.value;
 const playLists = await fetchUserPlaylists(userToken);
 ---
@@ -25,7 +33,10 @@ const playLists = await fetchUserPlaylists(userToken);
                        />
                        <span class="name">{playList.name}</span>
                        <span class="description">{playList.description}</span>
-                       <Button buttonClassName="use-playlist-button" text="Use playlist"></Button>
+                       <form method="POST" action="/playlists">
+                           <input type="hidden" name="playlistId" value={playList.id} />
+                           <Button type="submit" buttonClassName="use-playlist-button" text="Use playlist" />
+                       </form>
                    </div>
                )
             })
