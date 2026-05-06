@@ -21,5 +21,6 @@ import Button from '../Button/Button.astro';
     document.querySelector('.add-saved-btn').addEventListener('click', (e) => {
         const savedSongs = JSON.parse(localStorage.getItem('savedSongs') ?? '[]');
         document.getElementById('song-ids').value = savedSongs.join(',');
+        localStorage.removeItem('savedSongs');
     });
 </script>
