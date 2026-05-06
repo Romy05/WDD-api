@@ -10,7 +10,7 @@
 .playlist-container {
     display: grid;
     width: 100%;
-    justify-content: center;
+    align-items: center;
     grid-template-areas:
         "img title"
         "desc desc"
