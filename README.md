@@ -59,6 +59,15 @@ Verder gebruik ik nu localstorage om een array van liedjes op te slaan. Zodat de
 
 Verder heb ik de website responsive gemaakt en de UI naar mijn idee verbeterd.
 
+# Bronnen 
+
+- Claude AI voor het besturen van de song iFrame -> https://claude.ai/share/8eedb4a4-9670-44f5-a079-bd85e8e2c486
+- Gemini voor spotifyLogin.js & callback.js.
+- Claude AI voor de string splitter van de h1 in `<MainLayout>`.
+- Inladen van svg Icons in buttons -> Cyd en stack overflow https://stackoverflow.com/questions/76985138/any-way-to-init-an-astro-component-by-string
+- Gebruik custom dispatch event in mainLayout bij de iframe callbacks met behulp van Claude AI -> https://claude.ai/share/e9a554ec-32c7-49c9-98f6-5cae9f4c2a1d
+- `define:vars` -> https://www.answeroverflow.com/m/1157809781357154355
+
 # Stijl inspiratie
 View transitions als nummer naar playlist gaat,
 Document pip voor playlist weergave
