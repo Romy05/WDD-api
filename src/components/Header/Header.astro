@@ -19,7 +19,7 @@ import Button from '../Button/Button.astro';
 
 <script is:inline>
     const savedSongs = JSON.parse(localStorage.getItem('savedSongs') ?? '[]');
-    console.log(savedSongs, savedSongs.length)
+
     if (savedSongs.length === 0) {
         document.getElementById('add-saved-form').classList.add('invisible');
     }
