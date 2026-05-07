@@ -18,51 +18,56 @@ const playListId = Astro.cookies.get('current_playlist_id')?.value;
     <title>Songerator</title>
 </head>
 <body >
-<Header />
-<div id="playlist-preview-container">
-    <PlayListPreview />
-</div>
-<dialog id="playlist-picker">
-    <Link url="/playlists" isButtonLike className="choose-existing">Choose an existing playlist</Link>
-    <Button isSecondary buttonClassName="toggle-create-playlist" text="Create new playlist" />
-    <dialog id="playlist-create">
-        <form method="GET" action="/">
-            <label> Playlist Name
-                <input required id="playlist-name" name='name' type="text">
-            </label>
-            <label> Playlist Description
-                <input id="playlist-description" name='description' type="text">
-            </label>
-            <label>
-                Playlist is public
-                <input id="playlist-public" name="public" type="checkbox">
-            </label>
-            <div>
-                <Button buttonClassName="cancel-generate-playlist" text="Cancel"/>
-                <Button type="submit" buttonClassName="generate-playlist-button" text="Create playlist" />
-            </div>
-        </form>
+    <Header />
+
+    <div id="playlist-preview-container">
+        <PlayListPreview />
+    </div>
+
+    <dialog id="playlist-picker">
+        <Link url="/playlists" isButtonLike className="choose-existing">Choose an existing playlist</Link>
+
+        <Button isSecondary buttonClassName="toggle-create-playlist" text="Create new playlist" />
+
+        <dialog id="playlist-create">
+            <form class="create-playlist-form" method="GET" action="/">
+                <label> Playlist Name
+                    <input required id="playlist-name" name='name' type="text">
+                </label>
+                <label> Playlist Description
+                    <input id="playlist-description" name='description' type="text">
+                </label>
+                <label>
+                    Playlist is public
+                    <input id="playlist-public" name="public" type="checkbox">
+                </label>
+                <div>
+                    <Button buttonClassName="cancel-generate-playlist" text="Cancel"/>
+                    <Button type="submit" buttonClassName="generate-playlist-button" text="Create playlist" />
+                </div>
+            </form>
+        </dialog>
+
+        <Button buttonClassName="cancel-change-playlist" text="Cancel"/>
     </dialog>
-    <Button buttonClassName="cancel-change-playlist" text="Cancel"/>
-</dialog>
-{ playListId && (
-        <div>
-            <Button buttonClassName="toggle-pip" text="View playlist" />
-            <Button buttonClassName="change-playlist" text="Change playlist" />
-        </div>
+    { playListId && (
+            <div>
+                <Button buttonClassName="toggle-pip" text="View playlist" />
+                <Button buttonClassName="change-playlist" text="Change playlist" />
+            </div>
 
-)}
-<h1 class="large-heading empty-player">{ title.split("").map(letter => {
-    // spatie code van claude
-    return (
-            <span>{ letter === " " ? "\u00A0" : letter }</span>
-    )
-}) }</h1>
+    )}
+    <h1 class="large-heading empty-player">{ title.split("").map(letter => {
+        // spatie code van claude
+        return (
+                <span>{ letter === " " ? "\u00A0" : letter }</span>
+        )
+    }) }</h1>
 
-<main>
-    <SongPreview />
-    <slot />
-</main>
+    <main>
+        <SongPreview />
+        <slot />
+    </main>
 </body>
 </html>
 

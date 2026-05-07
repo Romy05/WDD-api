@@ -12,7 +12,6 @@ html {
     justify-content: space-around;
     align-items: center;
     padding-inline: 1rem;
-    view-transition-name: song-detail;
 }
 
 .link-wrapper:has(.navigation-link) {

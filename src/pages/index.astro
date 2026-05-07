@@ -9,7 +9,7 @@ import { genres } from '../data/spotifyGenres.json';
 import '../style/index.css';
 
 let playListId = Astro.cookies.get('current_playlist_id')?.value || undefined;
-const userToken= Astro.cookies.get('spotify_token')?.value;
+const userToken= 't'//Astro.cookies.get('spotify_token')?.value;
 
 let showForm = playListId !== undefined;
 
@@ -18,11 +18,11 @@ if (Astro.url.searchParams.get('name') && userToken) {
 	const description = Astro.url.searchParams.get('description');
 	const isPublic = Astro.url.searchParams.get('public') === 'on';
 
-	// playListId = '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb';
-	// Astro.cookies.set('current_playlist_id', playListId);
+	playListId = '0rCufIQ5xh2V7HkO5lpZVS?si=64c62882c24f49cb';
+	Astro.cookies.set('current_playlist_id', playListId);
 	console.log('setting playlist id in cookies')
-	const playList = await createPlaylist(userToken, name, description, isPublic);
-	Astro.cookies.set('current_playlist_id', playList.id);
+	// const playList = await createPlaylist(userToken, name, description, isPublic);
+	// Astro.cookies.set('current_playlist_id', playList.id);
 
 	showForm = true;
 } else if (!userToken) {
@@ -37,7 +37,7 @@ if (Astro.url.searchParams.get('name') && userToken) {
 	{
 		!userToken ? (
 			<div class="log-in">
-				<h3>Log in met spotify om de songerator te gebruiken</h3>
+				<h2 class="medium-heading">Log in with spotify to use the Songerator</h2>
 				<Link url="/auth/spotifyLogin" isButtonLike > Log in </Link>
 			</div>
 		) : (
@@ -59,6 +59,7 @@ if (Astro.url.searchParams.get('name') && userToken) {
 					<Button type="submit" buttonClassName="generate-button" text="Generate Songs" />
 				</form>
 				) : (
+					<h2 class="medium-heading">Select a playlist you want to add songs to</h2>
 					<Button buttonClassName="pick-playlist" text="Pick a playlist" />
 				)
 			}

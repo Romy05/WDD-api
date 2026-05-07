@@ -1,15 +1,14 @@
 @import 'typography.css';
 
-@view-transition {
-    navigation: auto;
-}
-
 :root {
     --color-black: #000;
     --color-white: #fff;
-    --color-dark: #101c45;
+    --color-dark: #008C96;
+    --color-dark-blue: #101c45;
     --color-red: #ea1c38;
-    --color-light: #dd8f04;
+    --color-green: #0b850b;
+    --color-yellow: #fe8c03;
+    --color-light: #DF6813;
     --font-primary: 'Roboto', sans-serif;
 
     /* spacing */
@@ -18,7 +17,7 @@
     --gap: clamp(1rem, 2.5vw, 2rem);
 
 
-    --color-text: var(--color-dark);
+    --color-text: var(--color-dark-blue);
     --color-button-text: var(--color-white);
     --color-background: var(--color-light);
 }
@@ -55,6 +54,7 @@ body {
 .page {
     display: flex;
     flex-direction: column;
+    gap: .5rem;
     justify-content: center;
     align-items: center;
 
@@ -78,6 +78,36 @@ form {
     gap: .5rem;
     align-items: center;
     justify-content: center;
+}
+
+
+/* Opt into custom styling for both select and its dropdown */
+select, ::picker(select) {
+    appearance: base-select;
+}
+
+/* Style the button */
+select {
+    padding: .25rem .5rem;
+    background-color: var(--color-dark-blue);
+    cursor: pointer;
+    border-radius: 0;
+    border: none;
+    width: 100%;
+    color: var(--color-white);
+}
+
+/* Style individual options inside the dropdown */
+option {
+    padding: .25rem;
+    background-color: var(--color-dark);
+    color: white;
+}
+
+/* Add custom checkmark for selected item */
+option:checked {
+    background-color: var(--color-white);
+    color:var(--color-dark);
 }
 
 

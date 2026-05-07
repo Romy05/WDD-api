@@ -5,7 +5,7 @@
 
     .placeholder {
         width: 100%;
-        border-bottom: var(--color-dark) 10px solid;
+        border-bottom: var(--color-dark-blue) 10px solid;
         border-radius: 2px;
     }
 

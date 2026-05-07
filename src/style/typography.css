@@ -52,6 +52,10 @@
 }
 
 .large-heading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    justify-content: end;
     span {
         display: inline-block;
         font-family: 'Jersey', sans-serif;
@@ -69,7 +73,8 @@
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-variation-settings: 'wght' 500;
     line-height: 1.2;
-    color: var(--color-text);
+    letter-spacing: 1px;
+    color: var(--color-black);
 }
 
 .small-body {

@@ -1,6 +1,6 @@
 .link-wrapper {
-    --link-color: #044504;
-    --shadow-color: var(--color-black);
+    --link-color: var(--color-red);
+    --shadow-color: var(--color-dark);
     --link-height: 2rem;
     display: flex;
     filter: drop-shadow(10px 4px 0 var(--shadow-color));
@@ -29,7 +29,8 @@
     }
 
     &:has(a:hover) {
-        --link-color: #0b850b;
+        --link-color: var(--color-green);
+        --shadow-color: var(--color-yellow);
     }
 }
 

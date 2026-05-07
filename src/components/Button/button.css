@@ -12,6 +12,11 @@
     &.secondary {
         --background-color: var(--color-dark);
         --shadow-color: var(--color-red);
+
+        &:has(button:hover) {
+            --background-color: var(--color-yellow);
+            --shadow-color: var(--color-green);
+        }
     }
 
     &.invisible {
@@ -38,6 +43,11 @@
         button {
             border: none;
         }
+    }
+
+    &:has(button:hover) {
+        --background-color: var(--color-green);
+        --shadow-color: var(--color-yellow);
     }
 
     &:has(img) {
@@ -111,11 +121,17 @@
 .transparent {
     --transparent: true;
     --background-color: transparent;
+    --shadow-color: var(--color-black);
     filter: none;
 
     &:has(button:active) {
         filter: none;
         transform: none;
+    }
+
+    &:has(button:hover){
+        --background-color: transparent;
+        --shadow-color: var(--color-black);
     }
 }
 
