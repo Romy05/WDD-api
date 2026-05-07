@@ -12,7 +12,7 @@ let songs = [];
 
 if (genre) {
     songs = await fetchSongs(genre);
-    console.log(songs, 'songs')
+
     Astro.cookies.set('currentGenre', genre);
     const songsToSave = songs.map(song => {
         return {
@@ -30,9 +30,6 @@ if (genre) {
     const cookieSongs = Astro.cookies.get('currentSongs')?.value;
     songs = JSON.parse(cookieSongs || '[]');
 }
-
-console.log("Actief genre:", genre, songs);
-
 ---
 
 
