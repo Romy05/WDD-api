@@ -49,6 +49,16 @@ Met die localstorage kun je daarna gelijk een aantal liedjes toevoegen aan de pl
 
 Ook wil ik meer kijken naar de visual hierarchy van mijn website, omdat dit nog niet erg duidelijk is.
 
+## Laatste loodjes
+Tijdens de vakantie en laatste week heb ik mijn website samengevoegd tot één geheel. Ik heb de localstorage en document PIP web API's toegevoegd aan mijn project.
+
+Het leek mij handig om een document PIP te maken van de playlist, zodat je deze open kan hebben terwijl je niet op de website zelf zit.
+In het document PIP laad ik een iFrame in wat ik ophaal uit de Spotify iFrame API. Als het document PIP gesloten is, dan is de iframe hidden in het `<MainLayout>` component. Dit heb ik op deze manier gedaan omdat dit het aantal API calls beperkt en de website sneller maakt.
+
+Verder gebruik ik nu localstorage om een array van liedjes op te slaan. Zodat deze liedjes met één knop toegevoegd kunnen worden aan de geselecteerde playlist.
+
+Verder heb ik de website responsive gemaakt en de UI naar mijn idee verbeterd.
+
 # Stijl inspiratie
 View transitions als nummer naar playlist gaat,
 Document pip voor playlist weergave
