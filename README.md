@@ -1,6 +1,7 @@
 # API Project WDD: Songerator
 
 De Songerator is een website waar je nieuwe liedjes kan ontdekken en toevoegen aan jouw bestaande spotify playlists.
+Ik wilde leren om meer gebruik te maken van standaard html attributen in combinatie met standaard CSS features. Hierbij vind ik CSS animaties en interactiviteit erg leuk om toe te voegen.
 
 <img width="1526" height="916" alt="Songerator" src="https://github.com/user-attachments/assets/30a2ef04-7290-43cf-8ffb-e62f71b2a558" />
 
