@@ -2,12 +2,12 @@
 
 De Songerator is een website waar je nieuwe liedjes kan ontdekken en toevoegen aan jouw bestaande spotify playlists.
 
-
+<img width="1526" height="916" alt="Songerator" src="https://github.com/user-attachments/assets/30a2ef04-7290-43cf-8ffb-e62f71b2a558" />
 
 ## NOTE:
 De app gebruikt de Spotify Web API met OAuth. Omdat de app in ontwikkelmodus staat, kunnen alleen goedgekeurde accounts inloggen.
 
-## Checkout 1-4-2026<img width="1526" height="916" alt="Songerator" src="https://github.com/user-attachments/assets/30a2ef04-7290-43cf-8ffb-e62f71b2a558" />
+## Checkout 1-4-2026
 
 Vandaag ben ik begonnen met het maken van een idee voor het project. 
 Ik wil graag de spotify API combineren met een videogame API waarbij ik op basis van een game genre aan de hand van web AI
